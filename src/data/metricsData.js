@@ -1,4 +1,6 @@
 import { FiCode, FiUsers, FiServer } from 'react-icons/fi';
+import { Terminal, LineChart, BarChart2, TrendingUp } from 'lucide-react';
+import { AreaChart, BarChart, LineChart as RechartsLineChart, Area, Bar, Line } from 'recharts';
 
 export const engineeringMetrics = {
   deliveryImpact: {
@@ -99,3 +101,24 @@ export const performanceData = [
     description: 'Technical Lead'
   }
 ];
+
+export const graphTypes = {
+  area: {
+    component: AreaChart,
+    element: Area,
+    icon: TrendingUp,
+    label: 'Area View'
+  },
+  bar: {
+    component: BarChart,
+    element: Bar,
+    icon: BarChart2,
+    label: 'Bar View'
+  },
+  line: {
+    component: RechartsLineChart,
+    element: Line,
+    icon: LineChart,
+    label: 'Line View'
+  }
+};

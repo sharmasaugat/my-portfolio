@@ -1,9 +1,9 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import { ResponsiveContainer, XAxis, YAxis, Tooltip } from 'recharts';
-import { performanceData } from '../../config/metricsConfig';
+import { performanceData, graphTypes } from '../../data/metricsData';
 
-const MetricsDisplay = ({ metric, activeGraph, setActiveGraph, showDetails, toggleDetails, graphTypes }) => {
+const MetricsDisplay = ({ metric, activeGraph }) => {
   const CurrentGraphComponent = graphTypes[activeGraph].component;
   const CurrentDataElement = graphTypes[activeGraph].element;
 
@@ -33,11 +33,7 @@ MetricsDisplay.propTypes = {
     dataKey: PropTypes.string.isRequired,
     color: PropTypes.string.isRequired
   }).isRequired,
-  activeGraph: PropTypes.oneOf(['area', 'bar', 'line']).isRequired,
-  setActiveGraph: PropTypes.func.isRequired,
-  showDetails: PropTypes.bool,
-  toggleDetails: PropTypes.func,
-  graphTypes: PropTypes.object.isRequired
+  activeGraph: PropTypes.oneOf(['area', 'bar', 'line']).isRequired
 };
 
 export default memo(MetricsDisplay);
