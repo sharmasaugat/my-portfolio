@@ -1,0 +1,18 @@
+:root {
+  /* Color System */
+  --color-dark: 222 47% 11%;
+  --color-light: 210 40% 98%;
+  
+  /* Theme Colors */
+  --theme-primary: 171 77% 64%;
+  --theme-secondary: 199 89% 48%;
+  
+  /* UI Colors */
+  --surface-primary: 217 33% 17%;
+  --surface-secondary: 218 31% 23%;
+  
+  /* Animation Speeds */
+  --transition-fast: 200ms;
+  --transition-normal: 300ms;
+  --transition-slow: 500ms;
+}

@@ -66,21 +66,14 @@ export const experiences = [
   }
 ];
 
-export const performanceData = [
-  { month: 'May', response: 500, optimized: 50 },
-  { month: 'Jun', response: 450, optimized: 45 },
-  { month: 'Jul', response: 300, optimized: 35 },
-  { month: 'Aug', response: 200, optimized: 25 },
-  { month: 'Sep', response: 100, optimized: 15 },
-  { month: 'Oct', response: 50, optimized: 5 },
+export const skills = [
+  { name: 'React', level: 90 },
+  // ...rest of skills
 ];
 
-export const skills = {
-  languages: ['C#', 'JavaScript (ES6+)', 'TypeScript', 'Java', 'Genero.4gl'],
-  frameworks: ['Angular', 'React', 'Redux', 'Spring', 'Node.js'],
-  cloud: ['AWS', 'Docker', 'Jenkins', 'CI/CD pipelines'],
-  databases: ['SQL Server', 'PostgreSQL', 'Oracle', 'MySQL', 'MongoDB']
-};
+export const certifications = [
+  // ...your certifications
+];
 
 export const metrics = [
   {
@@ -112,3 +105,23 @@ export const metrics = [
     color: "indigo"
   }
 ];
+
+// Derived data
+export const performanceData = metrics;
+
+// Calculate radar skills from the skills array
+export const radarSkills = skills.map(skill => ({
+  name: skill.name,
+  value: skill.level
+}));
+
+// Export a single object with all the data
+const portfolioData = {
+  metrics,
+  skills,
+  certifications,
+  performanceData,
+  radarSkills
+};
+
+export default portfolioData;
