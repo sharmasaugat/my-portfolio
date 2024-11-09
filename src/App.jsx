@@ -31,7 +31,7 @@ const App = () => {
       <CertificationSection />
 
       {/* Performance Metrics */}
-      <PerformanceMetrics data={performanceData} /> {/* Use the new component */}
+      <PerformanceMetrics data={performanceData} />
 
     {/* Skills Section Continued */}
     <section className="py-20">
