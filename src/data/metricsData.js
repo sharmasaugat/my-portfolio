@@ -1,5 +1,5 @@
 import { FiCode, FiUsers, FiServer } from 'react-icons/fi';
-import { Terminal, LineChart, BarChart2, TrendingUp } from 'lucide-react';
+import { LineChart, BarChart2, TrendingUp } from 'lucide-react';
 import { AreaChart, BarChart, LineChart as RechartsLineChart, Area, Bar, Line } from 'recharts';
 
 export const engineeringMetrics = {

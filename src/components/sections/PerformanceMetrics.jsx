@@ -1,130 +1,10 @@
-import React, { useState, memo, useMemo, useEffect } from 'react';
+import React, { useState, memo, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { motion } from 'framer-motion';
-import { AreaChart, BarChart, LineChart, ResponsiveContainer, XAxis, YAxis, Tooltip, Area, Bar, Line, CartesianGrid } from 'recharts';
-import { Terminal, LineChart as LineIcon, BarChart2, TrendingUp, GitBranch } from 'lucide-react';
-import { FiGitCommit, FiUsers, FiCpu, FiCode, FiServer, FiCheckCircle, FiGitPullRequest } from 'react-icons/fi';
-
-const engineeringMetrics = {
-  deliveryImpact: {
-    name: 'Delivery Impact',
-    icon: FiCode,
-    highlight: '98.5%',
-    trend: '+15%',
-    description: 'Code Quality Score',
-    dataKey: 'codeQuality',
-    color: '#64FFDA',
-    details: [
-      { label: 'Zero-Bug Releases', value: '94%' },
-      { label: 'First-Time Fix Rate', value: '92%' },
-      { label: 'Code Review Coverage', value: '100%' },
-      { label: 'Technical Debt', value: 'Reduced 40%' },
-      { label: 'On-Time Delivery', value: '96%' },
-      { label: 'Clean Code Principles', value: '95%' }
-    ],
-    kpis: [
-      { label: 'Production Issues', value: '< 0.5%' },
-      { label: 'Return Tickets', value: '2/mo avg' },
-      { label: 'Sprint Goals Met', value: '95%' }
-    ]
-  },
-  clientSuccess: {
-    name: 'Client Success',
-    icon: FiUsers,
-    highlight: '4.8/5',
-    trend: '+12%',
-    description: 'Client Satisfaction',
-    dataKey: 'satisfaction',
-    color: '#FF61D3',
-    details: [
-      { label: 'Support Response', value: '< 2 hours' },
-      { label: 'Issue Resolution', value: '< 24 hours' },
-      { label: 'Client Meetings', value: '150+' },
-      { label: 'Requirements Met', value: '98%' },
-      { label: 'Feature Adoption', value: '92%' },
-      { label: 'Client Retention', value: '100%' }
-    ],
-    kpis: [
-      { label: 'CSAT Score', value: '94%' },
-      { label: 'NPS Rating', value: '+65' },
-      { label: 'Repeat Projects', value: '4' }
-    ]
-  },
-  technicalGrowth: {
-    name: 'Technical Growth',
-    icon: FiServer,
-    highlight: '35+',
-    trend: 'Projects',
-    description: 'Project Contributions',
-    dataKey: 'contributions',
-    color: '#FFB86C',
-    details: [
-      { label: 'Features Shipped', value: '120+' },
-      { label: 'Technologies Used', value: '12' },
-      { label: 'APIs Developed', value: '15+' },
-      { label: 'Team Trainings', value: '8 Led' },
-      { label: 'Documentation', value: '25+ Guides' },
-      { label: 'Code Reviews', value: '500+' }
-    ],
-    kpis: [
-      { label: 'Critical Fixes', value: '45+' },
-      { label: 'Knowledge Shares', value: '12' },
-      { label: 'Best Practices', value: '15 Added' }
-    ]
-  }
-};
-
-const enhancedData = [
-  {
-    year: '2021',
-    codeQuality: 82,
-    satisfaction: 85,
-    contributions: 75,
-    description: 'Junior Developer'
-  },
-  {
-    year: '2022',
-    codeQuality: 88,
-    satisfaction: 90,
-    contributions: 85,
-    description: 'Mid-Level Developer'
-  },
-  {
-    year: '2023',
-    codeQuality: 94,
-    satisfaction: 95,
-    contributions: 92,
-    description: 'Senior Developer'
-  },
-  {
-    year: '2024',
-    codeQuality: 98,
-    satisfaction: 96,
-    contributions: 95,
-    description: 'Technical Lead'
-  }
-];
-
-const graphTypes = {
-  area: {
-    component: AreaChart,
-    element: Area,
-    icon: TrendingUp,
-    label: 'Area View'
-  },
-  bar: {
-    component: BarChart,
-    element: Bar,
-    icon: BarChart2,
-    label: 'Bar View'
-  },
-  line: {
-    component: LineChart,
-    element: Line,
-    icon: LineIcon,
-    label: 'Line View'
-  }
-};
+import { ResponsiveContainer, XAxis, YAxis, Tooltip, CartesianGrid } from 'recharts';
+import { Terminal, LineChart as LineIcon } from 'lucide-react';
+import { FiGitCommit } from 'react-icons/fi';
+import { engineeringMetrics, performanceData, graphTypes } from '../../data/metricsData';
 
 const MetricCard = memo(({ metric, isActive, onClick }) => (
   <motion.div
@@ -298,7 +178,7 @@ const PerformanceMetrics = () => {
               
               <div className="h-[400px]">
                 <ResponsiveContainer>
-                  <CurrentGraphComponent data={enhancedData}>
+                  <CurrentGraphComponent data={performanceData}>
                     <defs>
                       <linearGradient id={`colorGradient-${activeMetric}`} x1="0" y1="0" x2="0" y2="1">
                         <stop offset="5%" stopColor={engineeringMetrics[activeMetric]?.color} stopOpacity={0.3}/>
