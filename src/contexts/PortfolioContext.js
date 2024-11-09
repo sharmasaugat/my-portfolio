@@ -1,38 +1,17 @@
-import React, { createContext, useContext, useMemo, useState, useEffect } from 'react';
+import React, { createContext, useContext } from 'react';
 import PropTypes from 'prop-types';
-import { portfolioConfig } from '../data/portfolioConfig';
+import portfolioData from '../data/portfolioData';
 import ErrorBoundary from '../components/common/ErrorBoundary';
-import Loading from '../components/common/Loading';
-import { loadPortfolioData } from '../data/loadPortfolioData';
 
 const PortfolioContext = createContext();
 
-export const PortfolioProvider = ({ children }) => {
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState(null);
-
-  const value = useMemo(() => ({
-    ...portfolioConfig,
-    isLoading,
-    error
-  }), [isLoading, error]);
-
-  useEffect(() => {
-    loadPortfolioData()
-      .catch(err => setError(err))
-      .finally(() => setIsLoading(false));
-  }, []);
-
-  if (isLoading) return <Loading />;
-
-  return (
-    <ErrorBoundary>
-      <PortfolioContext.Provider value={value}>
-        {children}
-      </PortfolioContext.Provider>
-    </ErrorBoundary>
-  );
-};
+export const PortfolioProvider = ({ children }) => (
+  <ErrorBoundary>
+    <PortfolioContext.Provider value={portfolioData}>
+      {children}
+    </PortfolioContext.Provider>
+  </ErrorBoundary>
+);
 
 PortfolioProvider.propTypes = {
   children: PropTypes.node.isRequired
