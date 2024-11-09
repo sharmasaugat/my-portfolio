@@ -1,0 +1,94 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+
+    --radius: 0.5rem;
+  }
+
+  .bg-background {
+    background-color: hsl(var(--background));
+  }
+
+  .text-foreground {
+    color: hsl(var(--foreground));
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+  }
+}
+
+@layer components {
+  .gradient-bg {
+    @apply bg-gradient-to-r from-indigo-600 to-blue-600;
+  }
+}
+
+
+
+/* Add this to your index.css after the existing @layer components */
+
+@layer components {
+  /* Existing styles */
+  .gradient-bg {
+    @apply bg-gradient-to-r from-indigo-600 to-blue-600;
+  }
+
+  /* New styles for RadarChart */
+  .radar-chart-container {
+    @apply bg-white p-6 rounded-lg shadow-sm;
+    width: 100%;
+    height: 400px;
+  }
+
+  /* Override recharts default styles */
+  .recharts-wrapper {
+    width: 100% !important;
+    height: 100% !important;
+  }
+
+  .recharts-surface {
+    width: 100%;
+    height: 100%;
+  }
+
+  .recharts-polar-grid-angle line,
+  .recharts-polar-grid-concentric circle {
+    stroke: #e5e7eb;
+  }
+
+  .recharts-polar-angle-axis-tick text {
+    fill: #4b5563;
+    font-size: 12px;
+  }
+}
