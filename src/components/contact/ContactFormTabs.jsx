@@ -1,58 +1,35 @@
 import { memo, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Mail, MessageSquare, Send } from 'lucide-react';
-import { CONTACT_CONFIG } from '../../config/contact';
-
-const FORM_TABS = {
-  email: {
-    icon: <Mail size={20} />,
-    title: 'Email Me',
-    inputs: [
-      { name: 'name', label: 'Full Name', type: 'text', placeholder: 'John Doe' },
-      { name: 'email', label: 'Email Address', type: 'email', placeholder: 'john@example.com' },
-      { name: 'subject', label: 'Subject', type: 'text', placeholder: 'Project Discussion' },
-      { name: 'message', label: 'Your Message', type: 'textarea', placeholder: 'Tell me about your project...' }
-    ]
-  },
-  message: {
-    icon: <MessageSquare size={20} />,
-    title: 'Send Message',
-    inputs: [
-      { name: 'name', label: 'Full Name', type: 'text', placeholder: 'John Doe' },
-      { name: 'phone', label: 'Phone Number', type: 'tel', placeholder: CONTACT_CONFIG.phone },
-      { name: 'message', label: 'Your Message', type: 'textarea', placeholder: 'How can I help you?' }
-    ]
-  }
-};
+import { Send } from 'lucide-react';
+import Loading from '../common/Loading';
+import { CONTACT_DATA } from '../../data/ContactData';
 
 const ContactFormTabs = ({ values, loading, submitted, error, onChange, onSubmit }) => {
   const [activeTab, setActiveTab] = useState('email');
+  const { formTabs } = CONTACT_DATA;
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const endpoint = activeTab === 'email' 
-      ? CONTACT_CONFIG.api.endpoints.email 
-      : CONTACT_CONFIG.api.endpoints.sms;
-    onSubmit(e, endpoint);
+    onSubmit(e, formTabs[activeTab].endpoint);
   };
 
   return (
     <div className="form-section">
       <div className="form-tabs">
-        {Object.entries(FORM_TABS).map(([key, { icon, title }]) => (
+        {Object.entries(formTabs).map(([key, { icon: Icon, title }]) => (
           <button
             key={key}
             onClick={() => setActiveTab(key)}
             className={`form-tab ${activeTab === key ? 'active' : ''}`}
           >
-            {icon}
+            <Icon size={20} />
             <span>{title}</span>
           </button>
         ))}
       </div>
 
       <FormContent
-        tab={FORM_TABS[activeTab]}
+        tab={formTabs[activeTab]}
         values={values}
         loading={loading}
         submitted={submitted}
@@ -135,7 +112,7 @@ const SubmitButton = ({ loading, submitted }) => (
     <div className="submit-button-inner">
       {loading ? (
         <>
-          <div className="loading-spinner" />
+          <Loading size="sm" />
           <span>Sending...</span>
         </>
       ) : (

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Suspense, memo } from 'react';
 import { PortfolioProvider } from './contexts/PortfolioContext';
+import Loading from './components/common/Loading';
 import HeroSection from './components/sections/HeroSection';
 import ExperienceSection from './components/sections/ExperienceSection';
 import PerformanceMetrics from './components/sections/PerformanceMetrics';
@@ -9,12 +10,6 @@ import SkillsSection from './components/sections/SkillsSection';
 import ContactSection from './components/sections/ContactSection';
 import './styles/index.css';
 import './styles/globals.css';
-
-const Loading = memo(() => (
-  <div className="min-h-screen flex items-center justify-center">
-    <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#64FFDA]"></div>
-  </div>
-));
 
 const SectionDivider = memo(() => (
   <div className="section-divider-waves">
@@ -29,7 +24,7 @@ const SectionDivider = memo(() => (
 const App = () => (
   <PortfolioProvider>
     <div className="min-h-screen">
-      <Suspense fallback={<Loading />}>
+      <Suspense fallback={<Loading size="lg" />}>
         <HeroSection />
         <main>
           <section className="bg-white py-20">
