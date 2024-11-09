@@ -36,7 +36,7 @@ const HeroSection = () => {
                   <span className="prompt">$</span> cat tech-stack.txt
                 </div>
                 <div className="tech-stack-grid">
-                  {['JavaScript', 'Python', 'React', 'Node.js'].map(skill => (
+                  {['JavaScript', 'Java', 'C#', 'Genero 4GL', 'React', 'Node.js'].map(skill => (
                     <div key={skill} className="skill-tag">{skill}</div>
                   ))}
                 </div>
