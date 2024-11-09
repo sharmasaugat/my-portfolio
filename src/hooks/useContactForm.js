@@ -5,13 +5,13 @@ const initialState = {
   name: '',
   email: '',
   phone: '',
-  subject: '',
   message: ''
 };
 
-export const useContactForm = (messageType = 'email') => {
+export const useContactForm = () => {
   const [values, setValues] = useState(initialState);
   const [loading, setLoading] = useState(false);
+  const [messageType, setMessageType] = useState('email');
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState(null);
 
@@ -26,11 +26,6 @@ export const useContactForm = (messageType = 'email') => {
     setError(null);
 
     try {
-      const errors = contactService.validateForm(values, messageType);
-      if (errors) {
-        throw new Error(Object.values(errors)[0]);
-      }
-
       await contactService.sendMessage(values, endpoint);
       setSubmitted(true);
       setValues(initialState);
@@ -44,9 +39,11 @@ export const useContactForm = (messageType = 'email') => {
   return {
     values,
     loading,
+    messageType,
     submitted,
     error,
     handleChange,
-    handleSubmit
+    handleSubmit,
+    setMessageType
   };
 };

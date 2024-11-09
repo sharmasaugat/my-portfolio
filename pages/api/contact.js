@@ -5,7 +5,7 @@ export default async function handler(req, res) {
     return res.status(405).json({ message: 'Method not allowed' });
   }
 
-  const { name, email, subject, message } = req.body;
+  const { name, email, message } = req.body;
 
   if (!name || !email || !message) {
     return res.status(400).json({ message: 'Missing required fields' });
@@ -24,24 +24,13 @@ export default async function handler(req, res) {
 
     await transporter.sendMail({
       from: process.env.SMTP_USER,
-      to: process.env.CONTACT_EMAIL || 'sharma.saugat123@gmail.com',
-      subject: `Portfolio Contact: ${subject || 'New Message'}`,
+      to: process.env.CONTACT_EMAIL,
+      subject: `Portfolio Contact: New Message`,
       text: `From: ${name} (${email})\n\nMessage:\n${message}`,
-      html: `
-        <h2>New Contact Form Submission</h2>
-        <p><strong>From:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Subject:</strong> ${subject || 'N/A'}</p>
-        <p><strong>Message:</strong></p>
-        <p>${message.replace(/\n/g, '<br>')}</p>
-      `,
       replyTo: email
     });
 
-    res.status(200).json({ 
-      success: true, 
-      message: 'Email sent successfully' 
-    });
+    res.status(200).json({ success: true });
   } catch (error) {
     console.error('Email error:', error);
     res.status(500).json({ message: 'Failed to send email' });
