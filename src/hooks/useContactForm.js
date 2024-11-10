@@ -1,49 +1,57 @@
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 import { contactService } from '../services/contactService';
+import { validateFormFields } from '../utils/formValidation';
 
 const initialState = {
-  name: '',
-  email: '',
-  phone: '',
-  message: ''
+  values: {},
+  loading: false,
+  submitted: false,
+  error: null
 };
 
 export const useContactForm = () => {
-  const [values, setValues] = useState(initialState);
-  const [loading, setLoading] = useState(false);
-  const [messageType, setMessageType] = useState('email');
-  const [submitted, setSubmitted] = useState(false);
-  const [error, setError] = useState(null);
+  const [formState, setFormState] = useState(initialState);
 
-  const handleChange = (e) => {
+  const handleChange = useCallback((e) => {
     const { name, value } = e.target;
-    setValues(prev => ({ ...prev, [name]: value }));
-  };
+    setFormState(prev => ({
+      ...prev,
+      values: { ...prev.values, [name]: value }
+    }));
+  }, []);
 
-  const handleSubmit = async (e, endpoint) => {
+  const handleSubmit = useCallback(async (e, endpoint) => {
     e.preventDefault();
-    setLoading(true);
-    setError(null);
+    
+    // Validate form fields
+    const validationError = validateFormFields(formState.values);
+    if (validationError) {
+      setFormState(prev => ({ ...prev, error: validationError }));
+      return;
+    }
+
+    setFormState(prev => ({ ...prev, loading: true, error: null }));
 
     try {
-      await contactService.sendMessage(values, endpoint);
-      setSubmitted(true);
-      setValues(initialState);
+      await contactService.sendMessage(formState.values, endpoint);
+      setFormState({
+        values: {},
+        loading: false,
+        submitted: true,
+        error: null
+      });
     } catch (err) {
-      setError(err.message);
-    } finally {
-      setLoading(false);
+      setFormState(prev => ({
+        ...prev,
+        loading: false,
+        error: err.message
+      }));
     }
-  };
+  }, [formState.values]);
 
   return {
-    values,
-    loading,
-    messageType,
-    submitted,
-    error,
+    ...formState,
     handleChange,
-    handleSubmit,
-    setMessageType
+    handleSubmit
   };
 };
