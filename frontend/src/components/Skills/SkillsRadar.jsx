@@ -10,18 +10,19 @@ const skills = [
     details: [
       'Event-Driven Architecture',
       'Domain-Driven Design',
-      'TOGAF Methodology',
-      'Service Mesh Implementation'
+      'Microservices',
+      'API Gateway',
+      'CQRS/Event Sourcing',
+      'Multi Layered Architecture'
     ],
     color: 'from-cyan-600 to-blue-600'
   },
   {
     subject: 'Cloud Computing',
-    level: 90,
+    level: 70,
     icon: <Cloud className="w-6 h-6" />,
     details: [
       'AWS Services',
-      'Azure Platform',
       'Kubernetes',
       'Docker'
     ],
@@ -33,15 +34,16 @@ const skills = [
     icon: <Code2 className="w-6 h-6" />,
     details: [
       'React/Angular',
-      'Node.js',
-      '.NET Core',
-      'Spring Boot'
+      'Node.js/Express',
+      'Java/Spring',
+      'C#/.NET Core',
+      'Genero 4GL'
     ],
     color: 'from-emerald-500 to-teal-500'
   },
   {
     subject: 'Database Design',
-    level: 94,
+    level: 95,
     icon: <Database className="w-6 h-6" />,
     details: [
       'SQL Optimization',
