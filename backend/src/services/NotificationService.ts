@@ -78,9 +78,9 @@ export class NotificationService implements INotificationService {
             }
 
             const smsPayload: ISMSPayload = {
-                phone: notification.recipient, // changed from recipient to phone
+                phone: notification.recipient,
                 message: notification.content.message,
-                name: payload.name // optional field from ISMSPayload
+                name: payload.name
             };
 
             return await this.smsProvider.send(smsPayload);
