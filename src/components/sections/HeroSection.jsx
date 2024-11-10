@@ -1,7 +1,7 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import { motion } from 'framer-motion';
-import Terminal from '../common/Terminal';
+import Terminal from '../Common/Terminal';
 import { TECH_STACK, DEVELOPER_INFO } from '../../data/heroData';
 
 const TerminalOutput = memo(({ name, role }) => (

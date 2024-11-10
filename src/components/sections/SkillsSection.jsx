@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import SkillsRadar from '../skills/SkillsRadar';
+import SkillsRadar from '../Skills/SkillsRadar';
 
 const SkillsSection = () => (
   <section className="py-20 bg-gradient-to-b from-slate-50 to-white">

@@ -1,5 +1,5 @@
 import { memo } from 'react';
-import ContactForm from '../contact/ContactForm';
+import ContactForm from '../Contact/ContactForm';
 import { useContactForm } from '../../hooks/useContactForm';
 
 const ContactSection = () => {

@@ -1,7 +1,7 @@
 import React, { createContext, useContext } from 'react';
 import PropTypes from 'prop-types';
 import portfolioData from '../data/portfolioData';
-import ErrorBoundary from '../components/common/ErrorBoundary';
+import ErrorBoundary from '../components/Common/ErrorBoundary';
 
 const PortfolioContext = createContext();
 

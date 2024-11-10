@@ -1,13 +1,14 @@
 import React from 'react';
 import { Suspense, memo } from 'react';
 import { PortfolioProvider } from './contexts/PortfolioContext';
-import Loading from './components/common/Loading';
-import HeroSection from './components/sections/HeroSection';
-import ExperienceSection from './components/sections/ExperienceSection';
-import PerformanceMetrics from './components/sections/PerformanceMetrics';
-import CertificationSection from './components/sections/CertificationSection';
-import SkillsSection from './components/sections/SkillsSection';
-import ContactSection from './components/sections/ContactSection';
+import Loading from './components/Common/Loading';
+import HeroSection from './components/Sections/HeroSection';
+import ExperienceSection from './components/Sections/ExperienceSection';
+import PerformanceMetrics from './components/Sections/PerformanceMetrics';
+import CertificationSection from './components/Sections/CertificationSection';
+import SkillsSection from './components/Sections/SkillsSection';
+import ContactSection from './components/Sections/ContactSection';
+
 import './styles/index.css';
 import './styles/globals.css';
 

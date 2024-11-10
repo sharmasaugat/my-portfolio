@@ -1,7 +1,7 @@
 import { memo } from 'react';
 import PropTypes from 'prop-types';
 import { Send } from 'lucide-react';
-import Loading from '../common/Loading';
+import Loading from '../Common/Loading';
 
 export const SubmitButton = memo(({ loading, submitted, buttonType }) => {
   const buttonText = buttonType === 'email' ? 'Send Email' : 'Send Message';

@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import ExperienceCard from '../ExperienceCard';
+import ExperienceCard from '../Experience/ExperienceCard';
 import { usePortfolio } from '../../contexts/PortfolioContext';
 
 const ExperienceSection = () => {

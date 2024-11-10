@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { ChevronRight } from 'lucide-react';
-import AnimatedValue from './AnimatedValue';
+import AnimatedValue from '../Common/AnimatedValue';
 import { motion } from 'framer-motion';
 
 const ExperienceCard = ({ company, period, position, achievements, metrics }) => {

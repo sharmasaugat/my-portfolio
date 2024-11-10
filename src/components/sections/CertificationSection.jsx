@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import CertificationCard from '../Certification/CertificationCard';
 import { certifications } from '../../data/CertificationData';
-import Terminal from '../common/Terminal';
+import Terminal from '../Common/Terminal';
 import CertificationSidebar from '../Certification/CertificationSidebar';
 
 const sectionStyles = {
