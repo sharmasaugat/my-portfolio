@@ -1,18 +1,17 @@
 // src/infrastructure/providers/aws/SESProvider.ts
 import { injectable } from 'inversify';
-import AWS from 'aws-sdk';
+import { SESClient, SendEmailCommand } from '@aws-sdk/client-ses';
 import { IMessageProvider } from '../../../core/interfaces/IMessageProvider';
 import { IEmailPayload } from '../../../core/interfaces/IEmailPayload';
 import { NotificationType } from '../../../core/entities/NotificationStatus';
 import { Result } from '../../../utils/Result';
 import { logger } from '../../../utils/logger';
 import { AppError } from '../../../utils/errors/AppError';
-import { CONFIG } from '../../../config/constants';
-import { SendEmailRequest } from 'aws-sdk/clients/ses';
+import { CONFIG } from '../../../utils/constants';
 
 @injectable()
 export class SESProvider implements IMessageProvider<IEmailPayload> {
-    private ses: AWS.SES;
+    private sesClient: SESClient;
     public readonly type = NotificationType.EMAIL;
 
     constructor() {
@@ -20,8 +19,7 @@ export class SESProvider implements IMessageProvider<IEmailPayload> {
             throw new AppError('Missing required AWS configuration for SES', 500, 'AWS_CONFIG_ERROR');
         }
 
-        this.ses = new AWS.SES({
-            apiVersion: '2010-12-01', // Hardcode version instead of using CONFIG
+        this.sesClient = new SESClient({
             region: CONFIG.AWS.REGION
         });
     }
@@ -30,7 +28,7 @@ export class SESProvider implements IMessageProvider<IEmailPayload> {
         try {
             await this.validatePayload(payload);
 
-            const params: SendEmailRequest = {
+            const params = {
                 Source: CONFIG.AWS.SES_FROM_EMAIL!,
                 Destination: {
                     ToAddresses: [payload.email]
@@ -49,7 +47,8 @@ export class SESProvider implements IMessageProvider<IEmailPayload> {
                 }
             };
 
-            const result = await this.ses.sendEmail(params).promise();
+            const command = new SendEmailCommand(params);
+            const result = await this.sesClient.send(command);
             logger.info(`Email sent successfully: ${result.MessageId}`);
             return Result.ok(result.MessageId);
         } catch (error) {
@@ -64,7 +63,7 @@ export class SESProvider implements IMessageProvider<IEmailPayload> {
 
     private async validatePayload(payload: IEmailPayload): Promise<void> {
         if (!payload.email || !this.validateRecipient(payload.email)) {
-            throw new AppError('Invalid email recipiSUBJECT_MAX_LENGTHD_EMAIL');
+            throw new AppError('Invalid email recipient');
         }
         if (!payload.subject || payload.subject.length > CONFIG.EMAIL.TEMPLATE.SUBJECT_MAX_LENGTH) {
             throw new AppError('Invalid subject length', 400, 'INVALID_SUBJECT');

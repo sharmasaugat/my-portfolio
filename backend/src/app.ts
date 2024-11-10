@@ -9,7 +9,7 @@ import { notificationRoutes } from './api/routes/notification.routes';
 import { errorHandler } from './api/middleware/errorHandler';
 import { logger } from './utils/logger';
 import { initializeAWS } from './config/aws.config';
-import { CONFIG } from './config/constants';
+import { CONFIG } from './utils/constants';
 
 class App {
     
@@ -41,8 +41,7 @@ class App {
             origin: CONFIG.SERVER.CORS_ORIGIN,
             methods: [...CONFIG.SECURITY.CORS.methods],
             allowedHeaders: [...CONFIG.SECURITY.CORS.allowedHeaders],
-            credentials: CONFIG.SECURITY.CORS.credentials,
-            maxAge: CONFIG.SECURITY.CORS.maxAge
+            credentials: CONFIG.SECURITY.CORS.credentials
         }));
 
         // Rate limiting

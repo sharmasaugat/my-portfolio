@@ -69,14 +69,14 @@ export const CONFIG = {
         REGION: process.env.AWS_REGION || 'us-east-1',
         SES_FROM_EMAIL: process.env.AWS_SES_FROM_EMAIL,
         CREDENTIALS: {
-            ACCESS_KEY_ID: process.env.AWS_ACCESS_KEY_ID,
-            SECRET_ACCESS_KEY: process.env.AWS_SECRET_ACCESS_KEY
+            ACCESS_KEY_ID: process.env.AWS_ACCESS_KEY_ID || 'default_access_key_id',
+            SECRET_ACCESS_KEY: process.env.AWS_SECRET_ACCESS_KEY || 'default_secret_access_key'
         }
     },
 
     SERVER: {
-        PORT: process.env.PORT || 3000,
-        CORS_ORIGIN: process.env.CORS_ORIGIN || '*',
+        PORT: process.env.PORT || 5000,
+        CORS_ORIGIN: process.env.CORS_ORIGIN || 'http://localhost:5001',
         BODY_LIMIT: '10mb'
     },
 
@@ -89,8 +89,13 @@ export const CONFIG = {
         CSP: {
             'default-src': ["'self'"],
             'img-src': ["'self'", 'data:', 'https:'],
-            'script-src': ["'self'"],
+            'script-src': ["'self'", "'unsafe-inline'"],
             'style-src': ["'self'", "'unsafe-inline'"]
         }
+    },
+
+    RATE_LIMIT: {
+        WINDOW_MS: 15 * 60 * 1000, // 15 minutes
+        MAX_REQUESTS: 100
     }
 } as const;

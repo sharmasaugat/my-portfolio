@@ -1,6 +1,5 @@
-// src/infrastructure/providers/aws/SNSProvider.ts
 import { injectable } from 'inversify';
-import AWS from 'aws-sdk';
+import { SNSClient, PublishCommand } from '@aws-sdk/client-sns';
 import { IMessageProvider } from '../../../core/interfaces/IMessageProvider';
 import { ISMSPayload } from '../../../core/interfaces/ISMSPayload';
 import { NotificationType } from '../../../core/entities/NotificationStatus';
@@ -10,7 +9,7 @@ import { AppError } from '../../../utils/errors/AppError';
 
 @injectable()
 export class SNSProvider implements IMessageProvider<ISMSPayload> {
-    private sns: AWS.SNS;
+    private snsClient: SNSClient;
     public readonly type = NotificationType.SMS;
 
     constructor() {
@@ -18,8 +17,7 @@ export class SNSProvider implements IMessageProvider<ISMSPayload> {
             throw new AppError('Missing required AWS configuration');
         }
 
-        this.sns = new AWS.SNS({
-            apiVersion: '2010-03-31',
+        this.snsClient = new SNSClient({
             region: process.env.AWS_REGION
         });
     }
@@ -45,7 +43,8 @@ export class SNSProvider implements IMessageProvider<ISMSPayload> {
                 }
             };
 
-            const result = await this.sns.publish(params).promise();
+            const command = new PublishCommand(params);
+            const result = await this.snsClient.send(command);
             return Result.ok(result.MessageId);
         } catch (error) {
             logger.error('Failed to send SMS', error as Error);

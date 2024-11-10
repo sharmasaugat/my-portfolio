@@ -15,10 +15,6 @@ export class AppError extends Error {
         return error instanceof AppError;
     }
 
-    public static isAWSError(error: unknown): error is AWS.AWSError {
-        return error instanceof Error && 'code' in error;
-    }
-
     public toJSON() {
         return {
             name: this.name,
