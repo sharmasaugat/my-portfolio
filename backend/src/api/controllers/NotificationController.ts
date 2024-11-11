@@ -17,6 +17,7 @@ export class NotificationController {
         next: NextFunction
     ): Promise<void> => {
         try {
+            debugger;
             const result = await this.notificationService.sendEmail(req.body);
             if (result.isSuccess) {
                 res.status(200).json({ success: true, data: result.getValue() });
@@ -24,7 +25,7 @@ export class NotificationController {
                 res.status(400).json({ success: false, error: result.error });
             }
         } catch (error) {
-            next(new AppError('Email sending failed', error));
+            next(new AppError('Email sending failed'));
         }
     };
 
@@ -41,7 +42,7 @@ export class NotificationController {
                 res.status(400).json({ success: false, error: result.error });
             }
         } catch (error) {
-            next(new AppError('SMS sending failed', error));
+            next(new AppError('SMS sending failed'));
         }
     };
 }

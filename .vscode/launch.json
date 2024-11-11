@@ -9,21 +9,21 @@
                 "<node_internals>/**",
                 "${workspaceFolder}/node_modules/**"
             ],
-            "runtimeExecutable": "npm",
+            "program": "${workspaceFolder}/backend/src/server.ts",
             "runtimeArgs": [
-                "run",
-                "debug"
+                "-r",
+                "ts-node/register"
             ],
-            "cwd": "${workspaceFolder}/backend",
+            "sourceMaps": true,
+            "outFiles": ["${workspaceFolder}/backend/dist/**/*.js"],
+            "cwd": "${workspaceFolder}/backend",  // This matches your backend folder
             "console": "integratedTerminal",
             "env": {
-                "NODE_ENV": "development"
+                "NODE_ENV": "development",
+                "TS_NODE_PROJECT": "${workspaceFolder}/backend/tsconfig.json"  // Full path to tsconfig
             },
-            "outputCapture": "std",
             "protocol": "inspector",
-            "internalConsoleOptions": "neverOpen",
-            "stopOnEntry": false,
-            "smartStep": true
+            "restart": true
         }
     ]
 }

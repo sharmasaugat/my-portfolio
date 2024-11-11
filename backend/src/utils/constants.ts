@@ -75,7 +75,7 @@ export const CONFIG = {
     },
 
     SERVER: {
-        PORT: process.env.PORT || 5000,
+        PORT: process.env.PORT || 3000,
         CORS_ORIGIN: process.env.CORS_ORIGIN || 'http://localhost:5001',
         BODY_LIMIT: '10mb'
     },

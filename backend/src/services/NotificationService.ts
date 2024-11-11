@@ -50,7 +50,7 @@ export class NotificationService implements INotificationService {
 
             return await this.emailProvider.send(emailPayload);
         } catch (error) {
-            throw new AppError('Email sending failed', error);
+            throw new AppError('Email sending failed');
         }
     }
 
@@ -85,7 +85,7 @@ export class NotificationService implements INotificationService {
 
             return await this.smsProvider.send(smsPayload);
         } catch (error) {
-            throw new AppError('SMS sending failed', error);
+            throw new AppError('SMS sending failed');
         }
     }
 }
