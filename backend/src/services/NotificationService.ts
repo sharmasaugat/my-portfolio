@@ -9,6 +9,7 @@ import { NotificationType, NotificationStatus } from '../core/entities/Notificat
 import { Notification } from '../core/entities/Notification';
 import { IEmailPayload } from '../core/interfaces/IEmailPayload';
 import { ISMSPayload } from '../core/interfaces/ISMSPayload';
+import { logger } from '../utils/logger';
 
 @injectable()
 export class NotificationService implements INotificationService {
@@ -27,9 +28,12 @@ export class NotificationService implements INotificationService {
                 return Result.fail('Invalid email address');
             }
 
+            logger.info(`Using verified email: ${process.env.AWS_SES_FROM_EMAIL}`); // Log the verified email
+            logger.info(`AWS region: ${process.env.AWS_REGION}`); // Log the AWS region
+
             const notification = Notification.create(NotificationType.EMAIL, {
                 type: NotificationType.EMAIL,
-                recipient: payload.email,
+                recipient: process.env.AWS_SES_FROM_EMAIL!, // Verified email address
                 content: {
                     message: payload.message,
                     subject: payload.subject
@@ -42,9 +46,9 @@ export class NotificationService implements INotificationService {
             }
 
             const emailPayload: IEmailPayload = {
-                email: notification.recipient,
-                subject: notification.content.subject as string,
-                message: notification.content.message,
+                email: process.env.AWS_SES_FROM_EMAIL!, // Verified email address as recipient
+                subject: payload.subject,
+                message: `From: ${process.env.AWS_SES_FROM_EMAIL}\n\n${payload.message}`, // Include original sender's email in the message
                 name: payload.name
             };
 

@@ -19,6 +19,9 @@ export class SESProvider implements IMessageProvider<IEmailPayload> {
             throw new AppError('Missing required AWS configuration for SES', 500, 'AWS_CONFIG_ERROR');
         }
 
+        logger.info(`Using AWS region: ${CONFIG.AWS.REGION}`); // Log the AWS region
+        logger.info(`Using SES from email: ${CONFIG.AWS.SES_FROM_EMAIL}`); // Log the SES from email
+
         this.sesClient = new SESClient({
             region: CONFIG.AWS.REGION
         });
@@ -29,7 +32,7 @@ export class SESProvider implements IMessageProvider<IEmailPayload> {
             await this.validatePayload(payload);
 
             const params = {
-                Source: CONFIG.AWS.SES_FROM_EMAIL!,
+                Source: CONFIG.AWS.SES_FROM_EMAIL!, // Verified email
                 Destination: {
                     ToAddresses: [payload.email]
                 },

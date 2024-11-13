@@ -1,5 +1,6 @@
 // src/config/aws.config.ts
-import { fromIni } from '@aws-sdk/credential-provider-ini';
+import { SESClient } from '@aws-sdk/client-ses';
+import { SNSClient } from '@aws-sdk/client-sns';
 import { logger } from '../utils/logger';
 import { CONFIG } from '../utils/constants';
 import { AppError } from '../utils/errors/AppError';
@@ -10,7 +11,21 @@ export const initializeAWS = (): void => {
             throw new AppError('AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY must be provided');
         }
 
-        const credentials = fromIni();
+        const sesClient = new SESClient({
+            region: CONFIG.AWS.REGION,
+            credentials: {
+                accessKeyId: CONFIG.AWS.CREDENTIALS.ACCESS_KEY_ID,
+                secretAccessKey: CONFIG.AWS.CREDENTIALS.SECRET_ACCESS_KEY
+            }
+        });
+
+        const snsClient = new SNSClient({
+            region: CONFIG.AWS.REGION,
+            credentials: {
+                accessKeyId: CONFIG.AWS.CREDENTIALS.ACCESS_KEY_ID,
+                secretAccessKey: CONFIG.AWS.CREDENTIALS.SECRET_ACCESS_KEY
+            }
+        });
 
         logger.info('AWS configuration initialized successfully');
     } catch (error) {
