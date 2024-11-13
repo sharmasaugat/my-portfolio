@@ -1,18 +1,18 @@
-import React from 'react';
+import React, { memo } from 'react';
+import PropTypes from 'prop-types';
 import { motion } from 'framer-motion';
-import { CheckCircle, ExternalLink } from 'lucide-react';
+import CardHeader from './CardHeader';
+import SkillsShowcase from './SkillsShowcase';
+import VerifyButton from '../Button/VerifyButton';
 
-const CertificationCard = ({ certification }) => {
+const CertificationCard = memo(({ certification }) => {
   return (
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       className="h-full"
     >
-      <div className="flex items-center gap-3 mb-6">
-        <CheckCircle className="text-green-400" size={20} />
-        <span className="text-green-400 text-sm">Verified Certificate</span>
-      </div>
+      <CardHeader />
 
       <pre className="font-mono text-sm text-gray-300 mb-6">
         {JSON.stringify({
@@ -27,36 +27,25 @@ const CertificationCard = ({ certification }) => {
         }, null, 2)}
       </pre>
 
-      <div className="skills-showcase mt-6">
-        <div className="text-[#64FFDA] font-mono text-sm mb-3">Validated Skills:</div>
-        <div className="flex flex-wrap gap-2">
-          {certification.skills.map((skill, idx) => (
-            <motion.span
-              key={idx}
-              className="px-2 py-1 rounded-md text-xs bg-[#1E293B] text-[#94A3B8] border border-[#2A3B4D]"
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: idx * 0.1 }}
-            >
-              {skill}
-            </motion.span>
-          ))}
-        </div>
-      </div>
-
-      <motion.a
-        href={certification.verifyLink}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="verify-btn mt-6 inline-flex items-center gap-2 px-4 py-2 rounded-lg
-          bg-[#64FFDA]/10 text-[#64FFDA] text-sm hover:bg-[#64FFDA]/20 transition-all"
-        whileHover={{ x: 4 }}
-      >
-        <ExternalLink size={16} />
-        Verify Credential
-      </motion.a>
+      <SkillsShowcase skills={certification.skills} />
+      <VerifyButton verifyLink={certification.verifyLink} />
     </motion.div>
   );
+});
+
+CertificationCard.propTypes = {
+  certification: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    issuer: PropTypes.string.isRequired,
+    credentialId: PropTypes.string.isRequired,
+    issued: PropTypes.string.isRequired,
+    expiry: PropTypes.string.isRequired,
+    status: PropTypes.string.isRequired,
+    skills: PropTypes.arrayOf(PropTypes.string).isRequired,
+    verifyLink: PropTypes.string.isRequired
+  }).isRequired
 };
+
+CertificationCard.displayName = 'CertificationCard';
 
 export default CertificationCard;

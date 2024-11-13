@@ -1,5 +1,18 @@
 import { Terminal, Award } from 'lucide-react';
 
+/**
+ * @typedef {Object} Certification
+ * @property {React.ComponentType} icon
+ * @property {string} title
+ * @property {string} issuer
+ * @property {string} issued
+ * @property {string} expiry
+ * @property {string} credentialId
+ * @property {string[]} skills
+ * @property {string} verifyLink
+ * @property {string} status
+ */
+
 export const certifications = {
   'aws-cloud': {
     icon: Terminal,

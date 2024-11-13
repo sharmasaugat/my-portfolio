@@ -1,8 +1,8 @@
-
-import React from 'react';
+import React, { memo } from 'react';
+import PropTypes from 'prop-types';
 import { motion } from 'framer-motion';
 
-const CertificationSidebar = ({ certifications, activeCert, onCertSelect }) => (
+const CertificationSidebar = memo(({ certifications, activeCert, onCertSelect }) => (
   <div className="col-span-4 border-r border-[#2A3B4D] p-4 bg-[#1E2D3D]/50">
     <div className="text-[#64FFDA] font-mono text-sm mb-4">Available Credentials:</div>
     {Object.entries(certifications).map(([key, cert]) => (
@@ -22,6 +22,14 @@ const CertificationSidebar = ({ certifications, activeCert, onCertSelect }) => (
       </motion.div>
     ))}
   </div>
-);
+));
+
+CertificationSidebar.propTypes = {
+  certifications: PropTypes.object.isRequired,
+  activeCert: PropTypes.string.isRequired,
+  onCertSelect: PropTypes.func.isRequired
+};
+
+CertificationSidebar.displayName = 'CertificationSidebar';
 
 export default CertificationSidebar;

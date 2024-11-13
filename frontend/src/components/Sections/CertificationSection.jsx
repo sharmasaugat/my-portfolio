@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
+import React, { memo } from 'react';
 import { motion } from 'framer-motion';
 import CertificationCard from '../Certification/CertificationCard';
-import { certifications } from '../../data/CertificationData';
 import Terminal from '../Common/Terminal';
 import CertificationSidebar from '../Certification/CertificationSidebar';
+import useCertification from '../../hooks/useCertification';
 
-const sectionStyles = {
+const styles = {
+  section: "certification-section relative py-24",
+  container: "container mx-auto px-6",
   heading: "text-4xl font-bold mb-4",
   accent: "text-[#64FFDA]",
   description: "text-[#8892B0] max-w-2xl mx-auto",
@@ -19,34 +21,34 @@ const fadeInAnimation = {
   whileInView: { opacity: 1, y: 0 }
 };
 
-const CertificationSection = () => {
-  const [activeCert, setActiveCert] = useState('aws-cloud');
+const CertificationSection = memo(() => {
+  const { activeCert, setActiveCert, currentCertification, certifications } = useCertification();
 
   return (
-    <section className="certification-section relative py-24">
-      <div className="container mx-auto px-6">
+    <section className={styles.section}>
+      <div className={styles.container}>
         <motion.div 
           className="text-center mb-16"
           {...fadeInAnimation}
         >
-          <h2 className={sectionStyles.heading}>
-            Professional <span className={sectionStyles.accent}>Certifications</span>
+          <h2 className={styles.heading}>
+            Professional <span className={styles.accent}>Certifications</span>
           </h2>
-          <p className={sectionStyles.description}>
+          <p className={styles.description}>
             Industry-recognized credentials and technical certifications
           </p>
         </motion.div>
 
         <motion.div {...fadeInAnimation}>
           <Terminal title="~/credentials/certifications.json" className="max-w-4xl mx-auto">
-            <div className={sectionStyles.terminalBody}>
+            <div className={styles.terminalBody}>
               <CertificationSidebar 
                 certifications={certifications}
                 activeCert={activeCert}
                 onCertSelect={setActiveCert}
               />
-              <div className={sectionStyles.mainContent}>
-                <CertificationCard certification={certifications[activeCert]} />
+              <div className={styles.mainContent}>
+                <CertificationCard certification={currentCertification} />
               </div>
             </div>
           </Terminal>
@@ -54,6 +56,8 @@ const CertificationSection = () => {
       </div>
     </section>
   );
-};
+});
+
+CertificationSection.displayName = 'CertificationSection';
 
 export default CertificationSection;

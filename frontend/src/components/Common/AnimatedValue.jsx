@@ -14,7 +14,15 @@ export const animations = {
   }
 };
 
-// Animated Value Component
+/**
+ * AnimatedValue component
+ * 
+ * @param {object} props
+ * @param {number} props.value - The value to animate
+ * @param {string} [props.suffix=''] - The suffix to append to the value
+ * @param {number} [props.duration=2000] - The duration of the animation
+ * @returns {JSX.Element}
+  */
 const AnimatedValue = ({ value, suffix = '', duration = 2000 }) => {
     const [current, setCurrent] = useState(0);
     
