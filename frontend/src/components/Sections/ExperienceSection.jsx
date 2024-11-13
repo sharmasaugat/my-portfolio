@@ -7,7 +7,7 @@ const ExperienceSection = () => {
   const { experiences } = usePortfolio();
 
   return (
-    <section className="py-20">
+    <section className="py-08">
       <div className="container mx-auto px-4">
         <motion.h2
           initial={{ opacity: 0 }}

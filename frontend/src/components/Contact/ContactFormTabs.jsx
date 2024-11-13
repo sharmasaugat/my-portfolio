@@ -1,7 +1,7 @@
 import { memo, useState } from 'react';
 import PropTypes from 'prop-types';
 import { FormContent } from '../Form/FormContent';
-import { TabButtons } from '../Button/TabButtons';
+import TabButtons from '../Button/TabButtons';
 import { CONTACT_DATA } from '../../data/ContactData';
 
 const ContactFormTabs = ({ values, loading, submitted, error, onChange, onSubmit }) => {
@@ -19,6 +19,7 @@ const ContactFormTabs = ({ values, loading, submitted, error, onChange, onSubmit
         tabs={formTabs}
         activeTab={activeTab}
         onTabChange={setActiveTab}
+        variant="form"
       />
       <FormContent
         tab={formTabs[activeTab]}

@@ -31,13 +31,7 @@
   }
 
   /* Fix for white footer */
-  body {
-    @apply bg-[#0A192F];
-    min-height: 100vh;
-    overflow-x: hidden;
-  }
-
-  #root {
+  body, #root {
     @apply bg-[#0A192F];
     min-height: 100vh;
     overflow-x: hidden;
@@ -375,23 +369,6 @@
 
   .skill-orbs {
     @apply grid grid-cols-2 md:grid-cols-4 gap-6;
-  }
-
-  .skill-orb {
-    @apply relative p-6 rounded-lg bg-[#0A192F]/50 border border-[#64FFDA]/10
-           backdrop-blur-sm hover:border-[#64FFDA]/30 transition-all duration-300;
-    background: linear-gradient(145deg, #1e293b, #0f172a);
-    box-shadow: 8px 8px 16px #0d1524,
-                -8px -8px 16px #1e293b;
-  }
-
-  .skills-showcase {
-    @apply p-8 rounded-xl;
-    background: linear-gradient(135deg, #1a1f35 0%, #0f172a 100%);
-  }
-
-  .skill-orbs {
-    @apply grid grid-cols-2 md:grid-cols-3 gap-6;
   }
 
   .skill-orb {
@@ -745,31 +722,10 @@
     }
   }
 
-  /* Fix for white footer */
-  body {
-    @apply bg-[#0A192F];
-    min-height: 100vh;
-    overflow-x: hidden;
-  }
-
-  #root {
-    @apply bg-[#0A192F];
-    min-height: 100vh;
-    overflow-x: hidden;
-  }
-
   .portfolio-section:last-child {
     @apply pb-0 mb-0;
     min-height: auto;
     background-color: #0A192F;
-  }
-
-  .skills-radar-container {
-    @apply py-12 bg-[#0A192F];
-    min-height: auto !important;
-    background-image: 
-      radial-gradient(circle at 10% 20%, rgba(100, 255, 218, 0.1) 0%, transparent 20%),
-      radial-gradient(circle at 90% 80%, rgba(72, 190, 255, 0.1) 0%, transparent 20%);
   }
 
   .skills-radar-container {
