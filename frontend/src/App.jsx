@@ -9,7 +9,6 @@ import CertificationSection from './components/Sections/CertificationSection';
 import SkillsSection from './components/Sections/SkillsSection';
 import ContactSection from './components/Sections/ContactSection';
 
-import './styles/index.css';
 import './styles/globals.css';
 
 const SectionDivider = memo(() => (
