@@ -1,6 +1,6 @@
 import React, { Suspense, memo } from 'react';
 import { PortfolioProvider } from './contexts/PortfolioContext';
-
+import SectionDivider from './components/Sections/SectionDivider';
 // Components
 import Loading from './components/Common/Loading';
 import HeroSection from './components/Sections/HeroSection';
@@ -13,16 +13,7 @@ import ContactSection from './components/Sections/ContactSection';
 // Styles
 import './styles/globals.css';
 
-/* Section Divider Component */
-const SectionDivider = memo(() => (
-  <div className="section-divider-waves">
-    <div className="wave" />
-    <div className="wave-2" />
-    <div className="wave-3" />
-    <div className="floating-particles" />
-    <div className="section-divider-glow" />
-  </div>
-));
+
 
 const App = () => (
   <PortfolioProvider>
