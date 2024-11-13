@@ -17,7 +17,7 @@ export const CONTACT_DATA = {
     email: {
       icon: Mail,
       title: 'Email Me',
-      endpoint: '/api/contact/email',
+      endpoint: 'http://localhost:8080/api/notifications/email',
       inputs: [
         { 
           name: 'name',
@@ -52,7 +52,7 @@ export const CONTACT_DATA = {
     message: {
       icon: MessageSquare,
       title: 'Send Message',
-      endpoint: '/api/contact/sms',
+      endpoint: 'http://localhost:8080/api/notifications/sms',
       inputs: [
         {
           name: 'name',

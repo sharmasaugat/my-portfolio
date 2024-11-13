@@ -28,20 +28,18 @@ class App {
     }
 
     private initializeMiddlewares(): void {
-        // Security middlewares
-        this.app.use(helmet({
-            crossOriginResourcePolicy: { policy: "cross-origin" },
-            contentSecurityPolicy: {
-                directives: CONFIG.SECURITY.CSP
-            }
+        // CORS setup - should be before other middleware
+        this.app.use(cors({
+            origin: true, // Allow all origins in development
+            credentials: true,
+            methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+            allowedHeaders: ['Content-Type', 'Authorization', 'x-correlation-id']
         }));
 
-        // CORS setup
-        this.app.use(cors({
-            origin: CONFIG.SERVER.CORS_ORIGIN,
-            methods: [...CONFIG.SECURITY.CORS.methods],
-            allowedHeaders: [...CONFIG.SECURITY.CORS.allowedHeaders],
-            credentials: CONFIG.SECURITY.CORS.credentials
+        // Other middleware
+        this.app.use(helmet({
+            crossOriginResourcePolicy: { policy: "cross-origin" },
+            contentSecurityPolicy: false // Disable CSP in development
         }));
 
         // Rate limiting
@@ -91,34 +89,3 @@ class App {
 }
 
 export default App;
-
-
-
-
-
-
-// # Dockerfile
-// FROM node:18-alpine AS builder
-
-// WORKDIR /app
-
-// COPY package*.json ./
-// RUN npm ci
-
-// COPY . .
-// RUN npm run build
-
-// FROM node:18-alpine
-
-// WORKDIR /app
-
-// COPY --from=builder /app/dist ./dist
-// COPY --from=builder /app/package*.json ./
-
-// RUN npm ci --only=production
-
-// ENV NODE_ENV=production
-
-// EXPOSE 3000
-
-// CMD ["npm", "start"]

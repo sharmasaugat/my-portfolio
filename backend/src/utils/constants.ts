@@ -75,8 +75,8 @@ export const CONFIG = {
     },
 
     SERVER: {
-        PORT: process.env.PORT || 3000,
-        CORS_ORIGIN: process.env.CORS_ORIGIN || 'http://localhost:5001',
+        PORT: process.env.PORT || 8080,
+        CORS_ORIGIN: process.env.CORS_ORIGIN || 'http://localhost:3000', // Frontend origin
         BODY_LIMIT: '10mb'
     },
 

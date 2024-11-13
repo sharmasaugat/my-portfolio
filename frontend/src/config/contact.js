@@ -1,5 +1,5 @@
 export const CONTACT_CONFIG = {
-  email: 'ssaugat298.com',  // Replace with your email
+  email: 'ssaugat298@gmail.com',  // Replace with your email
   phone: '+1 (845) 209-1185',   // Replace with your phone
   social: {
     linkedin: 'https://linkedin.com/in/yourprofile',
@@ -7,8 +7,8 @@ export const CONTACT_CONFIG = {
   },
   api: {
     endpoints: {
-      email: '/api/contact/email',
-      sms: '/api/contact/sms'
+      email: 'http://localhost:8080/api/notifications/email',
+      sms: 'http://localhost:8080/api/notifications/sms'
     },
     headers: {
       'Content-Type': 'application/json'

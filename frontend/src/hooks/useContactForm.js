@@ -6,7 +6,8 @@ const initialState = {
   values: {},
   loading: false,
   submitted: false,
-  error: null
+  error: null,
+  successMessage: null
 };
 
 export const useContactForm = () => {
@@ -20,7 +21,7 @@ export const useContactForm = () => {
     }));
   }, []);
 
-  const handleSubmit = useCallback(async (e, endpoint) => {
+  const handleSubmit = useCallback(async (e) => {
     e.preventDefault();
     
     // Validate form fields
@@ -30,15 +31,16 @@ export const useContactForm = () => {
       return;
     }
 
-    setFormState(prev => ({ ...prev, loading: true, error: null }));
+    setFormState(prev => ({ ...prev, loading: true, error: null, successMessage: null }));
 
     try {
-      await contactService.sendMessage(formState.values, endpoint);
+      const result = await contactService.sendMessage(formState.values);
       setFormState({
         values: {},
         loading: false,
         submitted: true,
-        error: null
+        error: null,
+        successMessage: result.message
       });
     } catch (err) {
       setFormState(prev => ({

@@ -4,7 +4,7 @@ import ContactSidebar from './ContactSidebar';
 import ContactFormTabs from './ContactFormTabs';
 import { CONTACT_CONFIG } from '../../config/contact';
 
-const ContactForm = ({ messageType, values, loading, submitted, error, onChange, onSubmit }) => {
+const ContactForm = ({ messageType, values, loading, submitted, error, successMessage, onChange, onSubmit }) => {
   // Add resize observer for textarea auto-height
   useEffect(() => {
     const textareas = document.querySelectorAll('textarea');
@@ -45,9 +45,11 @@ const ContactForm = ({ messageType, values, loading, submitted, error, onChange,
           loading={loading}
           submitted={submitted}
           error={error}
+          successMessage={successMessage}
           onChange={onChange}
           onSubmit={onSubmit}
         />
+        {successMessage && <div className="success-message">{successMessage}</div>}
       </motion.div>
     </div>
   );
