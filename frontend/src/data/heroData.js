@@ -1,5 +1,9 @@
+export const TECH_CATEGORIES = {
+  LANGUAGES: ['JavaScript', 'Java', 'C#', 'Genero 4GL'],
+  FRAMEWORKS: ['React', 'Node.js']
+};
 
-export const TECH_STACK = ['JavaScript', 'Java', 'C#', 'Genero 4GL', 'React', 'Node.js'];
+export const TECH_STACK = Object.values(TECH_CATEGORIES).flat();
 
 export const DEVELOPER_INFO = {
   name: "Saugat Sharma",
