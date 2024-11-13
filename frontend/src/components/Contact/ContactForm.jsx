@@ -1,5 +1,5 @@
 import { memo, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import ContactSidebar from './ContactSidebar';
 import ContactFormTabs from './ContactFormTabs';
 import { CONTACT_CONFIG } from '../../config/contact';
@@ -49,7 +49,19 @@ const ContactForm = ({ messageType, values, loading, submitted, error, successMe
           onChange={onChange}
           onSubmit={onSubmit}
         />
-        {successMessage && <div className="success-message">{successMessage}</div>}
+        <AnimatePresence>
+          {successMessage && (
+            <motion.div 
+              className="success-message"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.3 }}
+            >
+              {successMessage}
+            </motion.div>
+          )}
+        </AnimatePresence>
       </motion.div>
     </div>
   );

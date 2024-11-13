@@ -3,7 +3,12 @@ import { contactService } from '../services/contactService';
 import { validateFormFields } from '../utils/formValidation';
 
 const initialState = {
-  values: {},
+  values: {
+    name: '',
+    email: '',
+    subject: '',
+    message: ''
+  },
   loading: false,
   submitted: false,
   error: null,
@@ -12,6 +17,14 @@ const initialState = {
 
 export const useContactForm = () => {
   const [formState, setFormState] = useState(initialState);
+
+  const resetForm = useCallback(() => {
+    setFormState(prev => ({
+      ...initialState,
+      submitted: false,
+      successMessage: null
+    }));
+  }, []);
 
   const handleChange = useCallback((e) => {
     const { name, value } = e.target;
@@ -24,24 +37,31 @@ export const useContactForm = () => {
   const handleSubmit = useCallback(async (e) => {
     e.preventDefault();
     
-    // Validate form fields
     const validationError = validateFormFields(formState.values);
     if (validationError) {
       setFormState(prev => ({ ...prev, error: validationError }));
       return;
     }
 
-    setFormState(prev => ({ ...prev, loading: true, error: null, successMessage: null }));
+    setFormState(prev => ({ ...prev, loading: true, error: null }));
 
     try {
       const result = await contactService.sendMessage(formState.values);
       setFormState({
-        values: {},
-        loading: false,
+        ...initialState,
         submitted: true,
-        error: null,
         successMessage: result.message
       });
+
+      // Clear success message after 5 seconds
+      setTimeout(() => {
+        setFormState(prev => ({
+          ...prev,
+          successMessage: null,
+          submitted: false
+        }));
+      }, 5000);
+
     } catch (err) {
       setFormState(prev => ({
         ...prev,
@@ -54,6 +74,7 @@ export const useContactForm = () => {
   return {
     ...formState,
     handleChange,
-    handleSubmit
+    handleSubmit,
+    resetForm
   };
 };
