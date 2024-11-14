@@ -22,6 +22,30 @@ export const animations = {
       initial: { opacity: 0, y: 10 },
       animate: { opacity: 1, y: 0 }
     }
+  },
+  avatar: {
+    avatar: {
+      initial: { scale: 0.9, opacity: 0 },
+      animate: { scale: 1, opacity: 1 },
+      transition: { duration: 0.5 }
+    },
+    statusBadge: {
+      initial: { y: 10, opacity: 0 },
+      animate: { y: 0, opacity: 1 },
+      transition: { delay: 0.3 }
+    }
+  },
+  modal: {
+    overlay: {
+      initial: { opacity: 0 },
+      animate: { opacity: 1 },
+      exit: { opacity: 0 }
+    },
+    content: {
+      initial: { scale: 0.95, opacity: 0 },
+      animate: { scale: 1, opacity: 1 },
+      exit: { scale: 0.95, opacity: 0 }
+    }
   }
 };
 

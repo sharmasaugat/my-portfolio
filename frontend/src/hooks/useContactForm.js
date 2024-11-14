@@ -1,6 +1,7 @@
 import { useState, useCallback, useMemo, useEffect } from 'react';
 import { contactService } from '../services/contactService';
 import { validateFormFields } from '../utils/formValidation';
+import { errorHandler } from '../utils/errorHandler';
 
 const MESSAGES = {
   success: 'Message sent successfully!',
@@ -20,7 +21,7 @@ const initialState = {
   error: null,
   successMessage: null,
   showModal: false,
-  activeTab: 'message' // Change default to message
+  activeTab: 'email'  // Change default back to email
 };
 
 const MODAL_CLOSE_DELAY = 3000; // Reduced to 3 seconds
@@ -77,15 +78,14 @@ export const useContactForm = () => {
     handleSubmit: async (e) => {
       e.preventDefault();
       
-      const validationError = validateFormFields(formState.values, formState.activeTab);
-      if (validationError) {
-        setFormState(prev => ({ ...prev, error: validationError }));
-        return;
-      }
-
-      setFormState(prev => ({ ...prev, loading: true, error: null }));
-
       try {
+        const validationError = validateFormFields(formState.values, formState.activeTab);
+        if (validationError) {
+          throw new Error(validationError);
+        }
+
+        setFormState(prev => ({ ...prev, loading: true, error: null }));
+
         const result = await contactService.sendMessage(
           formState.values,
           formState.activeTab
@@ -100,18 +100,19 @@ export const useContactForm = () => {
         }));
 
       } catch (err) {
+        const errorMessage = errorHandler(err);
         setFormState(prev => ({
           ...prev,
           loading: false,
-          error: err.message || MESSAGES.error
+          error: errorMessage
         }));
       }
     },
     resetForm,
-    toggleModal: (show = false) => setFormState(prev => ({
+    toggleModal: (show = false, tab = null) => setFormState(prev => ({
       ...initialState,
       showModal: show,
-      activeTab: show ? prev.activeTab : 'email'
+      activeTab: tab || prev.activeTab
     })),
     setActiveTab: (tab) => setFormState(prev => ({
       ...prev,

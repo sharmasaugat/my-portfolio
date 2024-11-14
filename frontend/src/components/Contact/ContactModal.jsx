@@ -5,20 +5,8 @@ import { X } from 'lucide-react';
 import Loading from '../Common/Loading';
 import { CONTACT_DATA } from '../../data/ContactData';
 import { SubmitButton } from '../Button/SubmitButton';
-import styles from '../../styles/ContactModal.module.css';
-
-const modalAnimations = {
-  overlay: {
-    initial: { opacity: 0 },
-    animate: { opacity: 1 },
-    exit: { opacity: 0 }
-  },
-  content: {
-    initial: { scale: 0.95, opacity: 0 },
-    animate: { scale: 1, opacity: 1 },
-    exit: { scale: 0.95, opacity: 0 }
-  }
-};
+import { animations } from '../Common/AnimatedValue';
+import styles from '../../styles/contactStyles/ContactModal.module.css';
 
 export const ContactModal = memo(({ 
   showModal, 
@@ -36,12 +24,12 @@ export const ContactModal = memo(({
     showModal && (
       <motion.div
         className={styles.overlay}
-        {...modalAnimations.overlay}
+        {...animations.modal.overlay}
         onClick={onClose}
       >
         <motion.div
           className={styles.modal}
-          {...modalAnimations.content}
+          {...animations.modal.content}
           onClick={(e) => e.stopPropagation()}
         >
           <button

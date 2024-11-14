@@ -8,7 +8,8 @@ const VALIDATION_RULES = {
     pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/
   },
   phone: {
-    pattern: /^\+?[\d\s-]+$/
+    pattern: /^\+?1?\s*\(?([0-9]{3})\)?[-.\s]?([0-9]{3})[-.\s]?([0-9]{4})$/,
+    required: true
   },
   message: {
     required: true,
@@ -17,25 +18,27 @@ const VALIDATION_RULES = {
 };
 
 export const validateFormFields = (values, activeTab) => {
-  for (const [field, rules] of Object.entries(VALIDATION_RULES)) {
-    if (rules.required && !values[field]?.trim()) {
+  const requiredFields = {
+    email: ['name', 'email', 'subject', 'message'],
+    message: ['name', 'phone', 'message']
+  };
+
+  const fields = requiredFields[activeTab];
+  for (const field of fields) {
+    if (!values[field]?.trim()) {
       return `${field.charAt(0).toUpperCase() + field.slice(1)} is required`;
     }
 
-    if (field === 'email' && values[field] && !rules.pattern.test(values[field])) {
+    if (field === 'email' && values[field] && !VALIDATION_RULES.email.pattern.test(values[field])) {
       return 'Please enter a valid email address';
     }
 
-    if (field === 'phone' && values[field] && !rules.pattern.test(values[field])) {
+    if (field === 'phone' && values[field] && !VALIDATION_RULES.phone.pattern.test(values[field])) {
       return 'Please enter a valid phone number';
     }
 
-    if (rules.minLength && values[field]?.trim().length < rules.minLength) {
-      return `${field.charAt(0).toUpperCase() + field.slice(1)} must be at least ${rules.minLength} characters`;
-    }
-
-    if (rules.maxLength && values[field]?.trim().length > rules.maxLength) {
-      return `${field.charAt(0).toUpperCase() + field.slice(1)} must be less than ${rules.maxLength} characters`;
+    if (field === 'message' && values[field]?.trim().length < VALIDATION_RULES.message.minLength) {
+      return `Message must be at least ${VALIDATION_RULES.message.minLength} characters`;
     }
   }
 

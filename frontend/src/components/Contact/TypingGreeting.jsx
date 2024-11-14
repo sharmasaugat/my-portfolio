@@ -1,8 +1,5 @@
-
 import { memo, useState, useEffect } from 'react';
-
-const GREETING_TEXT = "Software Engineer specializing in Full-Stack Development. Let's build something extraordinary together! 🚀";
-const TYPING_SPEED = 40;
+import { GREETING_TEXT, TYPING_SPEED } from '../../data/ContactData';
 
 export const TypingGreeting = memo(() => {
   const [currentTextIndex, setCurrentTextIndex] = useState(0);

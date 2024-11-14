@@ -6,12 +6,15 @@ export const CONTACT_ICONS = {
   phone: Phone
 };
 
+export const GREETING_TEXT = "Software Engineer specializing in Full-Stack Development. Let's build something extraordinary together! 🚀";
+export const TYPING_SPEED = 40;
+
 export const CONTACT_DATA = {
   title: "Let's Work Together",
   subtitle: "Get in touch with me",
   socials: {
-    github: "https://github.com/yourusername",
-    linkedin: "https://linkedin.com/in/yourusername",
+    github: "https://github.com/sharmasaugat",
+    linkedin: "www.linkedin.com/in/saugat-sharma",
     twitter: "https://twitter.com/yourusername"
   },
   contactInfo: {
@@ -23,7 +26,7 @@ export const CONTACT_DATA = {
     email: {
       icon: Mail,
       title: 'Send an Email',
-      endpoint: 'http://localhost:8080/api/notifications/email',
+      endpoint: '/api/contact/email',
       inputs: [
         { 
           name: 'name',
@@ -40,6 +43,13 @@ export const CONTACT_DATA = {
           validation: { required: true, pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/ }
         },
         {
+          name: 'subject',
+          label: 'Subject',
+          type: 'text',
+          placeholder: 'Project Discussion',
+          validation: { required: true }
+        },
+        {
           name: 'message',
           label: 'Your Message',
           type: 'textarea',
@@ -50,8 +60,8 @@ export const CONTACT_DATA = {
     },
     message: {
       icon: MessageSquare,
-      title: "Let's Chat",
-      endpoint: 'http://localhost:8080/api/notifications/sms',
+      title: "Lets Chat",
+      endpoint: '/api/contact/sms',
       inputs: [
         {
           name: 'name',
@@ -65,14 +75,17 @@ export const CONTACT_DATA = {
           label: 'Phone Number',
           type: 'tel',
           placeholder: '+1 (123) 456-7890',
-          validation: { required: true, pattern: /^\+?[\d\s-]+$/ }
+          validation: { 
+            required: true, 
+            pattern: /^\+?1?\s*\(?([0-9]{3})\)?[-.\s]?([0-9]{3})[-.\s]?([0-9]{4})$/ 
+          }
         },
         {
           name: 'message',
           label: 'Your Message',
           type: 'textarea',
-          placeholder: 'How can I help you?',
-          validation: { required: true }
+          placeholder: 'Type your message here...',
+          validation: { required: true, minLength: 5 }
         }
       ]
     }

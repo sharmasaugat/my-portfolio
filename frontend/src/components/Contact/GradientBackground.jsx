@@ -1,5 +1,5 @@
 import { memo } from 'react';
-import styles from '../../styles/GradientBackground.module.css';
+import styles from '../../styles/contactStyles/GradientBackground.module.css';
 
 export const GradientBackground = memo(() => (
   <div className={styles.container}>

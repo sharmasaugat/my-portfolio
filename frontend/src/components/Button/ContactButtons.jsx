@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { memo } from 'react';
 import { Send } from 'lucide-react';
-import styles from '../../styles/ContactButtons.module.css';
+import styles from '../../styles/contactStyles/ContactButtons.module.css';
 import { CONTACT_DATA } from '../../data/ContactData';
 
 export const ContactButtons = memo(({ onOpenModal }) => {

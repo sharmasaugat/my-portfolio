@@ -1,8 +1,8 @@
 import { memo } from 'react';
-import styles from '../../styles/contact-form.module.css';
+import styles from '../../styles/contactStyles/contact-form.module.css';
 import { GradientBackground } from './GradientBackground';
 import { AnimatedAvatar } from './AnimatedAvatar';
-import { ContactButtons } from './ContactButtons';
+import { ContactButtons } from '../Button/ContactButtons';
 import { ContactInfo } from './ContactInfo';
 import { ContactModal } from './ContactModal';
 import { TypingGreeting } from './TypingGreeting';
@@ -29,7 +29,9 @@ const ContactForm = () => {
                 <AnimatedAvatar />
                 <div className={styles.infoSection}>
                   <TypingGreeting />
-                  <ContactButtons onOpenModal={formState.toggleModal} />
+                  <ContactButtons 
+                    onOpenModal={(tab) => formState.toggleModal(true, tab)} 
+                  />
                   <ContactInfo />
                   <SocialLinks />
                 </div>

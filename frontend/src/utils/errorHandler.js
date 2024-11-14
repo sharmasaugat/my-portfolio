@@ -1,12 +1,8 @@
-
 // src/utils/errorHandler.js
 
-function errorHandler(err, req, res, next) {
-    console.error(err.stack);
-    res.status(500).send({
-        status: 'error',
-        message: err.message || 'Internal Server Error'
-    });
-}
-
-module.exports = errorHandler;
+export const errorHandler = (error) => {
+  if (error.response) {
+    return error.response.data.message || 'Server error occurred';
+  }
+  return error.message || 'Something went wrong. Please try again.';
+};
