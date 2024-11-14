@@ -1,4 +1,5 @@
 export const CONTACT_CONFIG = {
+  location: 'New York, NY',
   email: 'ssaugat298@gmail.com',  // Replace with your email
   phone: '+1 (845) 209-1185',   // Replace with your phone
   social: {

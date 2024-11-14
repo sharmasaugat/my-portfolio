@@ -1,14 +1,13 @@
 import { memo } from 'react';
-import ContactForm from '../Contact/ContactForm';
 import { useContactForm } from '../../hooks/useContactForm';
+import EnhancedContactForm from '../Contact/ContactForm';
 
 const ContactSection = () => {
   const { values, loading, submitted, error, successMessage, handleChange, handleSubmit } = useContactForm();
 
   return (
-    <section className="min-h-screen bg-[#0A192F] pt-16">
-      <ContactForm
-        messageType="email"
+    <section className="min-h-screen bg-gray-900 pt-16">
+      <EnhancedContactForm
         values={values}
         loading={loading}
         submitted={submitted}

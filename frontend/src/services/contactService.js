@@ -1,38 +1,42 @@
-class ContactService {
-  async sendMessage(data) {
-    const endpoint = 'http://localhost:8080/api/notifications/email';
+import { CONTACT_DATA } from '../data/ContactData';
+
+export const contactService = {
+  async sendMessage(values, type) {
+    const endpoint = CONTACT_DATA.formTabs[type].endpoint;
+    
     try {
+      // Get endpoint and create payload based on form type
+      const payload = type === 'email' ? {
+        name: values.name,
+        email: values.email,
+        subject: values.subject || 'Portfolio Contact',
+        message: values.message
+      } : {
+        name: values.name,
+        phone: values.phone,
+        message: values.message
+      };
+
       const response = await fetch(endpoint, {
         method: 'POST',
-        credentials: 'include',
         headers: {
           'Content-Type': 'application/json',
-          'Accept': 'application/json'
         },
-        body: JSON.stringify({
-          name: data.name,
-          email: data.email,
-          subject: data.subject,
-          message: data.message
-        })
+        body: JSON.stringify(payload)
       });
 
+      const data = await response.json();
+
       if (!response.ok) {
-        const errorData = await response.json().catch(() => null);
-        throw new Error(errorData?.message || `HTTP error! status: ${response.status}`);
+        throw new Error(data.message || CONTACT_DATA.messages.error);
       }
-      
-      const result = await response.json();
+
       return {
-        success: true,
-        message: `Email has been sent to Saugat Sharma and will be responding asap.`,
-        ...result
+        message: data.message || CONTACT_DATA.messages.success
       };
+
     } catch (error) {
-      console.error('Contact service error:', error);
-      throw error;
+      throw new Error(error.message || CONTACT_DATA.messages.error);
     }
   }
-}
-
-export const contactService = new ContactService();
+};

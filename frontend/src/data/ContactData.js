@@ -16,7 +16,7 @@ export const CONTACT_DATA = {
   formTabs: {
     email: {
       icon: Mail,
-      title: 'Email Me',
+      title: 'Send an Email',
       endpoint: 'http://localhost:8080/api/notifications/email',
       inputs: [
         { 
@@ -34,13 +34,6 @@ export const CONTACT_DATA = {
           validation: { required: true, pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/ }
         },
         {
-          name: 'subject',
-          label: 'Subject',
-          type: 'text',
-          placeholder: 'Project Discussion',
-          validation: { required: true }
-        },
-        {
           name: 'message',
           label: 'Your Message',
           type: 'textarea',
@@ -51,7 +44,7 @@ export const CONTACT_DATA = {
     },
     message: {
       icon: MessageSquare,
-      title: 'Send Message',
+      title: "Let's Chat",
       endpoint: 'http://localhost:8080/api/notifications/sms',
       inputs: [
         {

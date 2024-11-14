@@ -4,7 +4,11 @@ import { Send } from 'lucide-react';
 import Loading from '../Common/Loading';
 
 export const SubmitButton = memo(({ loading, submitted, buttonType }) => {
-  const buttonText = buttonType === 'email' ? 'Send Email' : 'Send Message';
+  const getButtonText = () => {
+    if (loading) return 'Sending...';
+    if (buttonType === 'email') return 'Send Email';
+    return "Let's Chat";
+  };
 
   return (
     <button
@@ -16,12 +20,12 @@ export const SubmitButton = memo(({ loading, submitted, buttonType }) => {
         {loading ? (
           <>
             <Loading size="sm" />
-            <span>Sending...</span>
+            <span>{getButtonText()}</span>
           </>
         ) : (
           <>
             <Send size={20} />
-            <span>{buttonText}</span>
+            <span>{getButtonText()}</span>
           </>
         )}
       </div>
