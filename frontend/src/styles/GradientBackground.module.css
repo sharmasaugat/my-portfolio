@@ -1,0 +1,12 @@
+
+.container {
+  @apply absolute inset-0 overflow-hidden;
+}
+
+.gradientBlue {
+  @apply absolute top-0 left-0 w-96 h-96 bg-blue-500/10 rounded-full filter blur-3xl animate-pulse;
+}
+
+.gradientPurple {
+  @apply absolute bottom-0 right-0 w-96 h-96 bg-purple-500/10 rounded-full filter blur-3xl animate-pulse delay-1000;
+}

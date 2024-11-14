@@ -1,0 +1,24 @@
+.buttonGrid {
+  @apply grid gap-4;
+}
+
+.button {
+  @apply relative overflow-hidden rounded-xl transition-all duration-300 hover:scale-[1.02];
+  composes: group from global;
+}
+
+.buttonGradient {
+  @apply absolute inset-0 bg-gradient-to-r from-gray-800 to-gray-700 opacity-95;
+}
+
+.buttonContent {
+  @apply relative p-6 flex items-center justify-between;
+}
+
+.iconContainer {
+  @apply p-3 rounded-lg;
+}
+
+.sendIcon {
+  @apply w-8 h-8 rounded-full flex items-center justify-center;
+}

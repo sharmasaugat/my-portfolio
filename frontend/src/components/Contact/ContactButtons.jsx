@@ -1,17 +1,17 @@
-
 import PropTypes from 'prop-types';
 import { memo } from 'react';
 import { Send } from 'lucide-react';
+import styles from '../../styles/ContactButtons.module.css';
 import { CONTACT_DATA } from '../../data/ContactData';
 
 export const ContactButtons = memo(({ onOpenModal }) => {
   return (
-    <div className="grid gap-4">
+    <div className={styles.buttonGrid}>
       {Object.entries(CONTACT_DATA.formTabs).map(([key, tab]) => (
         <button
           key={key}
           onClick={() => onOpenModal(key)}
-          className="group relative overflow-hidden rounded-xl transition-all duration-300 hover:scale-[1.02]"
+          className={styles.button}
         >
           <div className="absolute inset-0 bg-gradient-to-r from-gray-800 to-gray-700 opacity-95"></div>
           <div className="relative p-6 flex items-center justify-between">

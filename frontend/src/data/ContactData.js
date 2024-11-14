@@ -1,4 +1,10 @@
-import { Mail, MessageSquare } from 'lucide-react';
+import { Mail, MessageSquare, MapPin, Phone } from 'lucide-react';
+
+export const CONTACT_ICONS = {
+  location: MapPin,
+  email: Mail,
+  phone: Phone
+};
 
 export const CONTACT_DATA = {
   title: "Let's Work Together",
@@ -9,9 +15,9 @@ export const CONTACT_DATA = {
     twitter: "https://twitter.com/yourusername"
   },
   contactInfo: {
-    email: "hello@example.com",
-    phone: "+1 (123) 456-7890",
-    location: "New York, USA"
+    email: "ssaugat298@gmail.com",
+    phone: "+1 (945) 209-1185",
+    location: "Dallas TX, USA"
   },
   formTabs: {
     email: {

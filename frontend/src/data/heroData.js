@@ -17,7 +17,7 @@ export const DEVELOPER_INFO = {
     "Team Leadership"
   ],
   impact: {
-    projects: "50+",
+    projects: "10+",
     performance: "80% improvement",
     teamGrowth: "40% productivity"
   }

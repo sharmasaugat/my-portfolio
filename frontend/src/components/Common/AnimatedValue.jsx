@@ -11,6 +11,17 @@ export const animations = {
     initial: { opacity: 0, x: 20 },
     animate: { opacity: 1, x: 0 },
     transition: { duration: 0.7, delay: 0.2 }
+  },
+  sidebar: {
+    container: {
+      initial: { opacity: 0, x: -20 },
+      animate: { opacity: 1, x: 0 },
+      transition: { duration: 0.5 }
+    },
+    item: {
+      initial: { opacity: 0, y: 10 },
+      animate: { opacity: 1, y: 0 }
+    }
   }
 };
 

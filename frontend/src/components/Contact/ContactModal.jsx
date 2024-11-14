@@ -5,6 +5,7 @@ import { X } from 'lucide-react';
 import Loading from '../Common/Loading';
 import { CONTACT_DATA } from '../../data/ContactData';
 import { SubmitButton } from '../Button/SubmitButton';
+import styles from '../../styles/ContactModal.module.css';
 
 const modalAnimations = {
   overlay: {
@@ -34,12 +35,12 @@ export const ContactModal = memo(({
   return (
     showModal && (
       <motion.div
-        className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4"
+        className={styles.overlay}
         {...modalAnimations.overlay}
         onClick={onClose}
       >
         <motion.div
-          className="bg-gray-800/90 backdrop-blur-md rounded-xl p-6 relative max-w-lg w-full border border-gray-700/50"
+          className={styles.modal}
           {...modalAnimations.content}
           onClick={(e) => e.stopPropagation()}
         >

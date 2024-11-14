@@ -1,21 +1,13 @@
-
 import { memo } from 'react';
-import { MapPin, Mail, Phone } from 'lucide-react';
-import { CONTACT_CONFIG } from '../../config/contact';
-
-const CONTACT_ICONS = {
-  location: MapPin,
-  email: Mail,
-  phone: Phone
-};
+import { CONTACT_DATA, CONTACT_ICONS } from '../../data/ContactData';
 
 export const ContactInfo = memo(() => {
   return (
     <div className="space-y-4">
       {Object.entries({
-        location: CONTACT_CONFIG.location,
-        email: CONTACT_CONFIG.email,
-        phone: CONTACT_CONFIG.phone
+        location: CONTACT_DATA.contactInfo.location,
+        email: CONTACT_DATA.contactInfo.email,
+        phone: CONTACT_DATA.contactInfo.phone
       }).map(([key, value]) => {
         const Icon = CONTACT_ICONS[key];
         return (

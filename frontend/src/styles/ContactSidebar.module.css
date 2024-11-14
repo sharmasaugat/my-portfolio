@@ -1,0 +1,59 @@
+.container {
+  @apply flex flex-col items-center lg:items-start;
+}
+
+.avatar {
+  @apply relative animate-float mb-8;
+}
+
+.avatarGlow {
+  @apply absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-full blur-xl;
+}
+
+.statusIndicator {
+  @apply absolute -bottom-4 left-1/2 transform -translate-x-1/2;
+}
+
+.contactInfo {
+  @apply text-center lg:text-left;
+}
+
+.heading {
+  @apply text-2xl font-semibold bg-gradient-to-r from-blue-400 to-purple-400 text-transparent bg-clip-text mb-4;
+}
+
+.socialLinks {
+  @apply flex gap-4 justify-center lg:justify-start;
+}
+
+.avatarInner {
+  @apply relative w-32 h-32 ripple-bg bg-gradient-to-r from-blue-500 to-purple-500 rounded-full p-1;
+}
+
+.avatarContent {
+  @apply w-full h-full rounded-full bg-gray-900 p-1;
+}
+
+.avatarIcon {
+  @apply w-full h-full rounded-full bg-gradient-to-r from-blue-400/80 to-purple-400/80 flex items-center justify-center;
+}
+
+.statusBadge {
+  @apply bg-gray-800 rounded-full p-1 shadow-xl border border-gray-700/50;
+}
+
+.statusIndicatorInner {
+  @apply px-4 py-1.5 bg-gradient-to-r from-emerald-400 to-green-500 rounded-full flex items-center gap-2;
+}
+
+.contactItem {
+  @apply flex items-center gap-3 text-gray-300;
+}
+
+.iconWrapper {
+  @apply p-2 bg-gray-800 rounded-lg;
+}
+
+.socialLink {
+  @apply p-2 bg-gray-800 rounded-lg hover:bg-gray-700 transition-colors;
+}
