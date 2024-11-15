@@ -6,14 +6,14 @@ import CertificationSidebar from '../Certification/CertificationSidebar';
 import useCertification from '../../hooks/useCertification';
 
 const styles = {
-  section: "certification-section relative py-24",
-  container: "container mx-auto px-6",
-  heading: "text-4xl font-bold mb-4",
+  section: "certification-section relative py-12",
+  container: "container mx-auto px-4",
+  heading: "text-3xl font-bold mb-2",
   accent: "text-[#64FFDA]",
-  description: "text-[#8892B0] max-w-2xl mx-auto",
-  terminal: "certification-terminal max-w-4xl mx-auto",
+  description: "text-[#8892B0] text-sm mb-8",
+  terminal: "certification-terminal max-w-3xl mx-auto",
   terminalBody: "terminal-body grid grid-cols-12 gap-0",
-  mainContent: "col-span-8 p-6 bg-[#0A192F]/50"
+  mainContent: "col-span-8 p-4 bg-[#0A192F]/50"
 };
 
 const fadeInAnimation = {

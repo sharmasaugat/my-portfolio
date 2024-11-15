@@ -14,7 +14,7 @@ const CertificationCard = memo(({ certification }) => {
     >
       <CardHeader />
 
-      <pre className="font-mono text-sm text-gray-300 mb-6">
+      <pre className="font-mono text-xs text-gray-300 mb-4 leading-tight">
         {JSON.stringify({
           title: certification.title,
           issuer: certification.issuer,
