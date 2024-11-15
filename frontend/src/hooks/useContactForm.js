@@ -1,67 +1,10 @@
-import { useState, useCallback, useMemo, useEffect } from 'react';
-import { contactService } from '../services/contactService';
-import { validateFormFields } from '../utils/formValidation';
-import { errorHandler } from '../utils/errorHandler';
-
-const MESSAGES = {
-  success: 'Message sent successfully!',
-  error: 'Something went wrong. Please try again.'
-};
-
-const initialState = {
-  values: {
-    name: '',
-    email: '',
-    phone: '',
-    subject: '',
-    message: ''
-  },
-  loading: false,
-  submitted: false,
-  error: null,
-  successMessage: null,
-  showModal: false,
-  activeTab: 'email'  // Change default back to email
-};
-
-const MODAL_CLOSE_DELAY = 3000; // Reduced to 3 seconds
-const SUCCESS_MESSAGE_DELAY = 2000; // Reduced to 2 seconds
+import { useState, useCallback } from 'react';
+import { useContactFormSubmit } from './useContactFormSubmit';
+import { useContactFormReset } from './useContactFormReset';
+import { CONTACT_DATA } from '../data/ContactData';
 
 export const useContactForm = () => {
-  const [formState, setFormState] = useState(initialState);
-
-  // Clear form and reset state
-  const resetForm = useCallback(() => {
-    setFormState(initialState);
-  }, []);
-
-  // Clear success message and close modal after delays
-  useEffect(() => {
-    let successTimer;
-    let modalTimer;
-
-    if (formState.successMessage) {
-      successTimer = setTimeout(() => {
-        setFormState(prev => ({
-          ...prev,
-          successMessage: null,
-          submitted: false
-        }));
-      }, SUCCESS_MESSAGE_DELAY);
-
-      modalTimer = setTimeout(() => {
-        setFormState(prev => ({
-          ...initialState,
-          showModal: false
-        })); // Fixed extra parenthesis here
-      }, MODAL_CLOSE_DELAY);
-    }
-
-    return () => {
-      clearTimeout(successTimer);
-      clearTimeout(modalTimer);
-    };
-  }, [formState.successMessage]);
+  const [formState, setFormState] = useState(CONTACT_DATA.formConfig.initialState);
 
   const handleChange = useCallback((e) => {
     const { name, value } = e.target;
@@ -72,45 +15,15 @@ export const useContactForm = () => {
     }));
   }, []);
 
-  // Memoize form actions
-  const actions = useMemo(() => ({
+  const { handleSubmit } = useContactFormSubmit(formState, setFormState);
+  const { resetForm } = useContactFormReset(setFormState); // Removed clearSuccess
+
+  const actions = {
     handleChange,
-    handleSubmit: async (e) => {
-      e.preventDefault();
-      
-      try {
-        const validationError = validateFormFields(formState.values, formState.activeTab);
-        if (validationError) {
-          throw new Error(validationError);
-        }
-
-        setFormState(prev => ({ ...prev, loading: true, error: null }));
-
-        const result = await contactService.sendMessage(
-          formState.values,
-          formState.activeTab
-        );
-
-        setFormState(prev => ({
-          ...prev,
-          values: initialState.values,
-          loading: false,
-          submitted: true,
-          successMessage: result.message || MESSAGES.success
-        }));
-
-      } catch (err) {
-        const errorMessage = errorHandler(err);
-        setFormState(prev => ({
-          ...prev,
-          loading: false,
-          error: errorMessage
-        }));
-      }
-    },
+    handleSubmit,
     resetForm,
     toggleModal: (show = false, tab = null) => setFormState(prev => ({
-      ...initialState,
+      ...CONTACT_DATA.formConfig.initialState,
       showModal: show,
       activeTab: tab || prev.activeTab
     })),
@@ -119,18 +32,7 @@ export const useContactForm = () => {
       activeTab: tab,
       error: null
     }))
-  }), [handleChange, resetForm, formState.activeTab, formState.values]);
-
-  // Clear form on success
-  useEffect(() => {
-    if (formState.submitted) {
-      const timer = setTimeout(() => {
-        setFormState(initialState);
-      }, MODAL_CLOSE_DELAY);
-      
-      return () => clearTimeout(timer);
-    }
-  }, [formState.submitted]);
+  };
 
   return {
     ...formState,

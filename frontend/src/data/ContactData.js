@@ -106,5 +106,24 @@ export const CONTACT_DATA = {
     success: 'Message sent successfully!',
     error: 'Something went wrong. Please try again.',
     sending: 'Sending...'
+  },
+  formConfig: {
+    modalCloseDelay: 3000,
+    successMessageDelay: 2000,
+    initialState: {
+      values: {
+        name: '',
+        email: '',
+        phone: '',
+        subject: '',
+        message: ''
+      },
+      loading: false,
+      submitted: false,
+      error: null,
+      successMessage: null,
+      showModal: false,
+      activeTab: 'email'
+    }
   }
 };
