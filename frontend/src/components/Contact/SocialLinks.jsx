@@ -1,11 +1,10 @@
-
 import { memo } from 'react';
 import { Linkedin, Github } from 'lucide-react';
-import { CONTACT_CONFIG } from '../../config/contact';
+import { CONTACT_DATA } from '../../data/ContactData';
 
 export const SocialLinks = memo(() => (
   <div className="flex gap-4 justify-center lg:justify-start">
-    {Object.entries(CONTACT_CONFIG.social).map(([platform, link]) => {
+    {Object.entries(CONTACT_DATA.socials).map(([platform, link]) => {
       const Icon = platform === 'linkedin' ? Linkedin : Github;
       return (
         <a

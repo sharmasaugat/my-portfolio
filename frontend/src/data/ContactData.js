@@ -15,7 +15,6 @@ export const CONTACT_DATA = {
   socials: {
     github: "https://github.com/sharmasaugat",
     linkedin: "www.linkedin.com/in/saugat-sharma",
-    twitter: "https://twitter.com/yourusername"
   },
   contactInfo: {
     email: "ssaugat298@gmail.com",
