@@ -9,7 +9,7 @@ const MetricsDisplay = ({ metric, activeGraph }) => {
 
   return (
     <div className="metrics-display-panel">
-      <div className="h-[400px] w-full">
+      <div className="h-[300px] w-full">
         <ResponsiveContainer>
           <CurrentGraphComponent data={performanceData}>
             <CurrentDataElement 

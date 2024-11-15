@@ -4,69 +4,69 @@ import { AreaChart, BarChart, LineChart as RechartsLineChart, Area, Bar, Line } 
 
 export const engineeringMetrics = {
   deliveryImpact: {
-    name: 'Delivery Impact',
+    name: 'Engineering Impact',
     icon: FiCode,
-    highlight: '98.5%',
-    trend: '+15%',
-    description: 'Code Quality Score',
+    highlight: '99.9%',
+    trend: '+25%',
+    description: 'System Reliability',
     dataKey: 'codeQuality',
     color: '#64FFDA',
     details: [
-      { label: 'Zero-Bug Releases', value: '94%' },
-      { label: 'First-Time Fix Rate', value: '92%' },
-      { label: 'Code Review Coverage', value: '100%' },
-      { label: 'Technical Debt', value: 'Reduced 40%' },
-      { label: 'On-Time Delivery', value: '96%' },
-      { label: 'Clean Code Principles', value: '95%' }
+      { label: 'System Uptime', value: '99.99%' },
+      { label: 'CI/CD Pipeline', value: '< 15 mins' },
+      { label: 'Code Coverage', value: '95%' },
+      { label: 'Tech Debt Reduction', value: '60%' },
+      { label: 'Deployment Frequency', value: '3x/week' },
+      { label: 'Lead Time', value: '< 24 hours' }
     ],
     kpis: [
-      { label: 'Production Issues', value: '< 0.5%' },
-      { label: 'Return Tickets', value: '2/mo avg' },
-      { label: 'Sprint Goals Met', value: '95%' }
+      { label: 'Production Incidents', value: '< 0.1%' },
+      { label: 'MTTR', value: '< 30 mins' },
+      { label: 'Feature Velocity', value: '+40%' }
     ]
   },
   clientSuccess: {
-    name: 'Client Success',
+    name: 'Business Impact',
     icon: FiUsers,
-    highlight: '4.8/5',
-    trend: '+12%',
-    description: 'Client Satisfaction',
+    highlight: '$2.5M',
+    trend: 'Cost Saved',
+    description: 'Business Value',
     dataKey: 'satisfaction',
     color: '#FF61D3',
     details: [
-      { label: 'Support Response', value: '< 2 hours' },
-      { label: 'Issue Resolution', value: '< 24 hours' },
-      { label: 'Client Meetings', value: '150+' },
-      { label: 'Requirements Met', value: '98%' },
-      { label: 'Feature Adoption', value: '92%' },
-      { label: 'Client Retention', value: '100%' }
+      { label: 'System Performance', value: '+200%' },
+      { label: 'API Response Time', value: '< 100ms' },
+      { label: 'User Adoption', value: '+150%' },
+      { label: 'Revenue Impact', value: '+35%' },
+      { label: 'Scale Handled', value: '10M+ req/day' },
+      { label: 'Cost Optimization', value: '-40%' }
     ],
     kpis: [
-      { label: 'CSAT Score', value: '94%' },
-      { label: 'NPS Rating', value: '+65' },
-      { label: 'Repeat Projects', value: '4' }
+      { label: 'SLA Compliance', value: '99.9%' },
+      { label: 'System Scalability', value: '10x' },
+      { label: 'ROI Generated', value: '300%' }
     ]
   },
   technicalGrowth: {
-    name: 'Technical Growth',
+    name: 'Technical Leadership',
     icon: FiServer,
-    highlight: '35+',
-    trend: 'Projects',
-    description: 'Project Contributions',
+    highlight: '15+',
+    trend: 'Major Releases',
+    description: 'Architecture & Innovation',
     dataKey: 'contributions',
     color: '#FFB86C',
     details: [
-      { label: 'Features Shipped', value: '120+' },
-      { label: 'Technologies Used', value: '12' },
-      { label: 'APIs Developed', value: '15+' },
-      { label: 'Team Trainings', value: '8 Led' },
-      { label: 'Documentation', value: '25+ Guides' },
-      { label: 'Code Reviews', value: '500+' }
+      { label: 'Microservices Built', value: '12+' },
+      { label: 'Cloud Infrastructure', value: '3 Platforms' },
+      { label: 'Team Mentored', value: '8 Engineers' },
+      { label: 'Design Patterns', value: '15 Implemented' },
+      { label: 'System Migrations', value: '4 Complete' },
+      { label: 'Architecture Reviews', value: '20+ Led' }
     ],
     kpis: [
-      { label: 'Critical Fixes', value: '45+' },
-      { label: 'Knowledge Shares', value: '12' },
-      { label: 'Best Practices', value: '15 Added' }
+      { label: 'Systems Designed', value: '6+' },
+      { label: 'Patents/Innovation', value: '2 Filed' },
+      { label: 'Tech Stack Depth', value: '12 Core' }
     ]
   }
 };
@@ -74,31 +74,31 @@ export const engineeringMetrics = {
 export const performanceData = [
   {
     year: '2021',
-    codeQuality: 82,
-    satisfaction: 85,
-    contributions: 75,
-    description: 'Junior Developer'
+    codeQuality: 85,
+    satisfaction: 88,
+    contributions: 80,
+    description: 'Full Stack Engineer'
   },
   {
     year: '2022',
-    codeQuality: 88,
-    satisfaction: 90,
-    contributions: 85,
-    description: 'Mid-Level Developer'
+    codeQuality: 92,
+    satisfaction: 94,
+    contributions: 88,
+    description: 'Senior Engineer'
   },
   {
     year: '2023',
-    codeQuality: 94,
-    satisfaction: 95,
-    contributions: 92,
-    description: 'Senior Developer'
+    codeQuality: 96,
+    satisfaction: 97,
+    contributions: 95,
+    description: 'Tech Lead'
   },
   {
     year: '2024',
-    codeQuality: 98,
-    satisfaction: 96,
-    contributions: 95,
-    description: 'Technical Lead'
+    codeQuality: 99,
+    satisfaction: 98,
+    contributions: 98,
+    description: 'Senior Tech Lead'
   }
 ];
 

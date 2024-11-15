@@ -100,7 +100,7 @@ const PerformanceMetrics = () => {
   }, [activeMetric]);
 
   return (
-    <section className="py-24 bg-[#0A192F]">
+    <section className="py-16 bg-[#0A192F]">
       <div className="container mx-auto px-4">
         <motion.div className="metrics-container">
           <div className="flex flex-col items-center mb-12">
@@ -132,7 +132,7 @@ const PerformanceMetrics = () => {
           </div>
 
           {activeView === 'metrics' ? (
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
               {Object.entries(engineeringMetrics).map(([key, metric]) => (
                 <MetricCard
                   key={key}
@@ -176,7 +176,7 @@ const PerformanceMetrics = () => {
                 ))}
               </div>
               
-              <div className="h-[400px]">
+              <div className="h-[300px]">
                 <ResponsiveContainer>
                   <CurrentGraphComponent data={performanceData}>
                     <defs>

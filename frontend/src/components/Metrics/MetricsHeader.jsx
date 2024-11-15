@@ -4,12 +4,12 @@ import { FiGitCommit } from 'react-icons/fi';
 import { Terminal, LineChart } from 'lucide-react';
 
 const MetricsHeader = ({ activeView, setActiveView }) => (
-  <div className="flex flex-col items-center mb-12">
-    <div className="metric-badge inline-flex mb-4">
+  <div className="flex flex-col items-center mb-8">
+    <div className="metric-badge inline-flex mb-3">
       <FiGitCommit className="w-4 h-4" />
       <span>Engineering Impact</span>
     </div>
-    <h2 className="text-3xl font-bold text-white mb-6">
+    <h2 className="text-2xl font-bold text-white mb-4">
       Technical <span className="text-[#64FFDA]">Achievements</span>
     </h2>
     <div className="flex gap-4 p-1 bg-[#1E293B]/50 rounded-lg backdrop-blur-sm">
