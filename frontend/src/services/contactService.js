@@ -3,9 +3,7 @@ import { CONTACT_DATA } from '../data/ContactData';
 export const contactService = {
   async sendMessage(data, type) {
     try {
-      const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:8080';
-      
-      // Format payload based on message type
+      const { api } = CONTACT_DATA;
       const payload = type === 'email' 
         ? {
             name: data.name,
@@ -15,11 +13,11 @@ export const contactService = {
           }
         : {
             name: data.name,
-            number: data.phone, // Map phone to number for SMS
+            number: data.phone,
             message: data.message
           };
 
-      const response = await fetch(`${API_BASE_URL}/api/notifications/${type}`, {
+      const response = await fetch(`${api.baseUrl}${api.endpoints[type]}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -28,19 +26,16 @@ export const contactService = {
       });
 
       if (!response.ok) {
-        // Better error handling
         if (response.status === 404) {
-          throw new Error('API endpoint not found. Please check your server configuration.');
+          throw new Error(api.errors.notFound);
         }
-        const errorText = await response.text();
-        throw new Error('Server error: Please try again later');
+        throw new Error(api.errors.server);
       }
 
-      const result = await response.json();
-      return result;
+      return await response.json();
     } catch (error) {
       console.error('Contact service error:', error);
-      throw new Error(error.response?.data?.message || 'Unable to send message. Please try again later.');
+      throw new Error(error.response?.data?.message || CONTACT_DATA.api.errors.general);
     }
   }
 };

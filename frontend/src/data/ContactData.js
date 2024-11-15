@@ -90,6 +90,18 @@ export const CONTACT_DATA = {
       ]
     }
   },
+  api: {
+    baseUrl: process.env.REACT_APP_API_URL || 'http://localhost:8080',
+    endpoints: {
+      email: '/api/notifications/email',
+      sms: '/api/notifications/sms'
+    },
+    errors: {
+      notFound: 'API endpoint not found. Please check your server configuration.',
+      server: 'Server error: Please try again later',
+      general: 'Unable to send message. Please try again later.'
+    }
+  },
   messages: {
     success: 'Message sent successfully!',
     error: 'Something went wrong. Please try again.',
