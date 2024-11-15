@@ -10,16 +10,16 @@ import { ContactFormInputs } from './ContactFormInputs';
 import styles from '../../styles/contactStyles/ContactModal.module.css';
 
 const ContactModal = ({ 
-  showModal, 
+  showModal = false, 
   activeTab, 
   values, 
   loading, 
-  error,
+  error = '', 
   submitted,
   handleChange,
   handleSubmit,
-  onClose,
-  successMessage
+  onClose = () => {}, 
+  successMessage = 'Thank you for your message!'
 }) => {
   if (!showModal) return null;
 
@@ -74,7 +74,7 @@ const ContactModal = ({
 };
 
 ContactModal.propTypes = {
-  showModal: PropTypes.bool.isRequired,
+  showModal: PropTypes.bool,
   activeTab: PropTypes.string.isRequired,
   values: PropTypes.shape({}).isRequired,
   loading: PropTypes.bool.isRequired,
@@ -82,13 +82,8 @@ ContactModal.propTypes = {
   submitted: PropTypes.bool.isRequired,
   handleChange: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
-  onClose: PropTypes.func.isRequired,
+  onClose: PropTypes.func,
   successMessage: PropTypes.string
-};
-
-ContactModal.defaultProps = {
-  error: '',
-  successMessage: 'Thank you for your message!'
 };
 
 const MemoizedContactModal = memo(ContactModal);

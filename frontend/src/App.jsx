@@ -5,7 +5,7 @@ import SectionDivider from './components/Sections/SectionDivider';
 import Loading from './components/Common/Loading';
 import HeroSection from './components/Sections/HeroSection';
 import ExperienceSection from './components/Sections/ExperienceSection';
-import PerformanceMetrics from './components/Sections/PerformanceMetrics';
+import EngineeringImpactSection from './components/Sections/EngineeringImpactSection';
 import CertificationSection from './components/Sections/CertificationSection';
 import SkillsSection from './components/Sections/SkillsSection';
 import ContactSection from './components/Sections/ContactSection';
@@ -33,7 +33,7 @@ const App = () => (
             </section>
             {/* Performance Metrics Section */}
             <section className="py-20">
-              <PerformanceMetrics />
+              <EngineeringImpactSection />
             </section>
             {/* Section Divider */}
             <SectionDivider />

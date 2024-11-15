@@ -1,104 +1,85 @@
-import { FiCode, FiUsers, FiServer } from 'react-icons/fi';
-import { LineChart, BarChart2, TrendingUp } from 'lucide-react';
-import { AreaChart, BarChart, LineChart as RechartsLineChart, Area, Bar, Line } from 'recharts';
+import { Code, GitBranch, Database } from 'lucide-react';
+import { AreaChart as AreaChartIcon, LineChart as LineChartIcon, BarChart3 as BarChartIcon } from 'lucide-react';
+import { 
+  AreaChart, LineChart, BarChart,
+  Area, Line, Bar
+} from 'recharts';
 
-export const engineeringMetrics = {
-  deliveryImpact: {
-    name: 'Engineering Impact',
-    icon: FiCode,
-    highlight: '99.9%',
-    trend: '+25%',
-    description: 'System Reliability',
+export const engineeringMetrics = [
+  {
+    name: 'Code Quality',
+    icon: Code,
+    highlight: '95%',
+    trend: '+5%',
     dataKey: 'codeQuality',
     color: '#64FFDA',
     details: [
-      { label: 'System Uptime', value: '99.99%' },
-      { label: 'CI/CD Pipeline', value: '< 15 mins' },
       { label: 'Code Coverage', value: '95%' },
-      { label: 'Tech Debt Reduction', value: '60%' },
-      { label: 'Deployment Frequency', value: '3x/week' },
-      { label: 'Lead Time', value: '< 24 hours' }
+      { label: 'Bug Rate', value: '0.5%' },
+      { label: 'Technical Debt', value: 'Low' },
+      { label: 'Code Reviews', value: '100%' }
     ],
     kpis: [
-      { label: 'Production Incidents', value: '< 0.1%' },
-      { label: 'MTTR', value: '< 30 mins' },
-      { label: 'Feature Velocity', value: '+40%' }
+      { label: 'Maintainability', value: '95%' },
+      { label: 'Security Score', value: '98%' },
+      { label: 'Performance', value: '92%' }
+    ],
+    achievements: [
+      'Reduced bug escape rate by 75% through improved testing practices',
+      'Mentored 4 junior developers in code quality and best practices',
+      'Streamlined deployment process reducing release time by 40%',
+      'Achieved highest client satisfaction score in team for 2023'
     ]
   },
-  clientSuccess: {
-    name: 'Business Impact',
-    icon: FiUsers,
-    highlight: '$2.5M',
-    trend: 'Cost Saved',
-    description: 'Business Value',
-    dataKey: 'satisfaction',
-    color: '#FF61D3',
+  {
+    name: 'Git Activity',
+    icon: GitBranch,
+    highlight: '2.5K',
+    trend: '+12%',
+    dataKey: 'commits',
+    color: '#818CF8',
     details: [
-      { label: 'System Performance', value: '+200%' },
-      { label: 'API Response Time', value: '< 100ms' },
-      { label: 'User Adoption', value: '+150%' },
-      { label: 'Revenue Impact', value: '+35%' },
-      { label: 'Scale Handled', value: '10M+ req/day' },
-      { label: 'Cost Optimization', value: '-40%' }
+      { label: 'Pull Requests', value: '450+' },
+      { label: 'Code Reviews', value: '500+' },
+      { label: 'Merge Rate', value: '95%' },
+      { label: 'Branches', value: '200+' }
     ],
     kpis: [
-      { label: 'SLA Compliance', value: '99.9%' },
-      { label: 'System Scalability', value: '10x' },
-      { label: 'ROI Generated', value: '300%' }
+      { label: 'Merge Success', value: '98%' },
+      { label: 'Deploy Speed', value: '15m' },
+      { label: 'Branch Health', value: '96%' }
+    ],
+    achievements: [
+      'Implemented CI/CD pipeline reducing deployment time by 70%',
+      'Automated code review process saving 10+ hours per week',
+      'Achieved zero failed deployments for 6 months straight',
+      'Reduced merge conflicts by 85% through improved git workflow'
     ]
   },
-  technicalGrowth: {
-    name: 'Technical Leadership',
-    icon: FiServer,
-    highlight: '15+',
-    trend: 'Major Releases',
-    description: 'Architecture & Innovation',
-    dataKey: 'contributions',
-    color: '#FFB86C',
+  {
+    name: 'System Design',
+    icon: Database,
+    highlight: '99.9%',
+    trend: '+2%',
+    dataKey: 'uptime',
+    color: '#F472B6',
     details: [
-      { label: 'Microservices Built', value: '12+' },
-      { label: 'Cloud Infrastructure', value: '3 Platforms' },
-      { label: 'Team Mentored', value: '8 Engineers' },
-      { label: 'Design Patterns', value: '15 Implemented' },
-      { label: 'System Migrations', value: '4 Complete' },
-      { label: 'Architecture Reviews', value: '20+ Led' }
+      { label: 'Services Built', value: '25+' },
+      { label: 'APIs Designed', value: '40+' },
+      { label: 'Microservices', value: '15+' },
+      { label: 'Cloud Platform', value: 'AWS' }
     ],
     kpis: [
-      { label: 'Systems Designed', value: '6+' },
-      { label: 'Patents/Innovation', value: '2 Filed' },
-      { label: 'Tech Stack Depth', value: '12 Core' }
+      { label: 'System Uptime', value: '99.9%' },
+      { label: 'Response Time', value: '<100ms' },
+      { label: 'Error Rate', value: '<0.1%' }
+    ],
+    achievements: [
+      'Designed scalable architecture supporting 1M+ daily users',
+      'Reduced system latency by 65% through optimizations',
+      'Implemented zero-downtime deployment strategy',
+      'Cut infrastructure costs by 40% through efficient design'
     ]
-  }
-};
-
-export const performanceData = [
-  {
-    year: '2021',
-    codeQuality: 85,
-    satisfaction: 88,
-    contributions: 80,
-    description: 'Full Stack Engineer'
-  },
-  {
-    year: '2022',
-    codeQuality: 92,
-    satisfaction: 94,
-    contributions: 88,
-    description: 'Senior Engineer'
-  },
-  {
-    year: '2023',
-    codeQuality: 96,
-    satisfaction: 97,
-    contributions: 95,
-    description: 'Tech Lead'
-  },
-  {
-    year: '2024',
-    codeQuality: 99,
-    satisfaction: 98,
-    contributions: 98,
-    description: 'Senior Tech Lead'
   }
 ];
 
@@ -106,19 +87,43 @@ export const graphTypes = {
   area: {
     component: AreaChart,
     element: Area,
-    icon: TrendingUp,
-    label: 'Area View'
+    label: 'Stacked Area',
+    icon: AreaChartIcon,
+    style: { 
+      type: "monotone",
+      strokeWidth: 0,
+      fillOpacity: 1,
+      stackId: "1"
+    }
+  },
+  line: {
+    component: LineChart,
+    element: Line,
+    label: 'Curved Line',
+    icon: LineChartIcon,
+    style: { 
+      type: "monotoneX",
+      strokeWidth: 3,
+      dot: false,
+      activeDot: { r: 6 }
+    }
   },
   bar: {
     component: BarChart,
     element: Bar,
-    icon: BarChart2,
-    label: 'Bar View'
-  },
-  line: {
-    component: RechartsLineChart,
-    element: Line,
-    icon: LineChart,
-    label: 'Line View'
+    label: 'Bar',
+    icon: BarChartIcon,
+    style: { 
+      radius: [4, 4, 0, 0],
+      maxBarSize: 40
+    }
   }
 };
+
+// Modify performance data to include baseline for stacked area
+export const performanceData = [
+  { year: '2020', codeQuality: 85, commits: 1200, uptime: 98.5, baseline: 70 },
+  { year: '2021', codeQuality: 88, commits: 1800, uptime: 99.0, baseline: 75 },
+  { year: '2022', codeQuality: 92, commits: 2200, uptime: 99.5, baseline: 80 },
+  { year: '2023', codeQuality: 95, commits: 2500, uptime: 99.9, baseline: 85 }
+];

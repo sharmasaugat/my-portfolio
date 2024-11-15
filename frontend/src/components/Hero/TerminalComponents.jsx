@@ -1,10 +1,9 @@
-
 import React, { memo, useMemo } from 'react';
 import PropTypes from 'prop-types';
 
-export const TerminalOutput = memo(({ name, role }) => (
+export const TerminalOutput = memo(({ name, nameColor, role }) => (
   <div className="output" data-testid="terminal-output" role="region" aria-label="Developer Info">
-    <h1 className="name">{name}</h1>
+    <h1 className="name" style={{ color: nameColor }}>{name}</h1>
     <p className="role">{role}</p>
   </div>
 ));
@@ -37,6 +36,7 @@ export const CommandLine = memo(({ command, children }) => (
 // PropTypes definitions
 TerminalOutput.propTypes = {
   name: PropTypes.string.isRequired,
+  nameColor: PropTypes.string.isRequired,
   role: PropTypes.string.isRequired
 };
 
