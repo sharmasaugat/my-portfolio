@@ -67,7 +67,7 @@ export class NotificationService implements INotificationService {
             const emailPayload: IEmailPayload = {
                 email: process.env.AWS_SES_FROM_EMAIL!, // Verified email address as recipient
                 subject: payload.subject,
-                message: `From: ${process.env.AWS_SES_FROM_EMAIL}\n\n${payload.message}`, // Include original sender's email in the message
+                message: `From: ${payload.email}\n\n${payload.message}`, // Include original sender's email in the message
                 name: payload.name
             };
 
