@@ -1,3 +1,13 @@
+/**
+ * Domain entity representing an SMS notification.
+ * Implements the Factory pattern for object creation with validation.
+ * 
+ * Features:
+ * - Immutable properties using readonly
+ * - UUID-based unique identification
+ * - Factory method with validation
+ * - Inheritance from base Notification class
+ */
 import { v4 as uuidv4 } from 'uuid';
 import { NotificationType } from './NotificationStatus';
 import { Notification } from './Notification';

@@ -7,6 +7,14 @@ import { Result } from '@utils/Result';
 import { logger } from '@utils/logger';
 import { AppError } from '@utils/errors/AppError';
 
+/**
+ * SNSProvider implements IMessageProvider for SMS delivery using AWS SNS.
+ * This provider handles:
+ * - AWS SNS client initialization and configuration
+ * - Message formatting and delivery
+ * - Phone number validation
+ * - Error handling and logging
+ */
 @injectable()
 export class SNSProvider implements IMessageProvider<ISMSPayload> {
     private snsClient: SNSClient;
@@ -22,6 +30,16 @@ export class SNSProvider implements IMessageProvider<ISMSPayload> {
         });
     }
 
+    /**
+     * Sends an SMS message using AWS SNS
+     * @param payload - Contains phone number, message content, and optional metadata
+     * @returns Result<string> - Success with MessageId or failure with error message
+     * 
+     * Features:
+     * - Configures SMS type as Transactional for better delivery
+     * - Sets custom sender ID for brand recognition
+     * - Includes comprehensive error handling
+     */
     public async send(payload: ISMSPayload): Promise<Result<string>> {
         try {
             if (!this.validateRecipient(payload.phone)) {
@@ -52,6 +70,10 @@ export class SNSProvider implements IMessageProvider<ISMSPayload> {
         }
     }
 
+    /**
+     * Validates phone numbers using E.164 format
+     * Format: +[country code][number], e.g., +14155552671
+     */
     public validateRecipient(phone: string): boolean {
         const phoneRegex = /^\+[1-9]\d{1,14}$/;
         return phoneRegex.test(phone);

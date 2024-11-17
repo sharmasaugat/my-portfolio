@@ -1,3 +1,26 @@
+/**
+ * @middleware rateLimiter
+ * @description Rate limiting middleware using Token Bucket algorithm
+ * 
+ * Architecture:
+ * - Factory pattern for middleware creation
+ * - Closure-based configuration
+ * 
+ * Security features:
+ * - IP-based rate limiting
+ * - Configurable limits per endpoint
+ * - DoS protection
+ * 
+ * Design decisions:
+ * - In-memory storage for performance
+ * - Separate limits for different services
+ * - Non-blocking implementation
+ * 
+ * Scaling considerations:
+ * - Works best in single-instance deployments
+ * - For distributed systems, consider Redis-based implementation
+ */
+
 import { Request, Response, NextFunction } from 'express';
 import { RateLimitError } from '@utils/errors/AppError';
 import { TokenBucket } from '@ratelimiter/algorithms/tokenBucket';

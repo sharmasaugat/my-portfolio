@@ -1,3 +1,15 @@
+/**
+ * Core application setup implementing a modular Express.js architecture.
+ * Follows the composition root pattern for dependency injection.
+ * 
+ * Architecture Features:
+ * - Modular middleware configuration
+ * - Centralized error handling
+ * - Health check endpoint
+ * - AWS service initialization
+ * - Dependency injection setup
+ * - Route management
+ */
 import 'reflect-metadata';
 import express, { Application } from 'express';
 import { notificationRoutes } from '@routes/notification.routes';

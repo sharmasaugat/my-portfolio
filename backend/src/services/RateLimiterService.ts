@@ -1,4 +1,23 @@
-
+/**
+ * @class RateLimiterService
+ * @description Implements Token Bucket algorithm for rate limiting
+ * 
+ * Architecture:
+ * - Factory pattern for bucket creation
+ * - Singleton pattern for bucket management
+ * 
+ * Design decisions:
+ * - Uses Token Bucket over Leaky Bucket for better burst handling
+ * - In-memory storage for quick access (trade-off: not suitable for distributed systems)
+ * 
+ * Integration:
+ * - Used by API middleware
+ * - Configurable per-endpoint limits
+ * 
+ * Error handling:
+ * - Throws RateLimitError for quota exceeding
+ * - Maintains separate buckets per IP for isolation
+ */
 import { TokenBucket } from '@ratelimiter/algorithms/tokenBucket';
 import { RateLimitError } from '@errors/AppError';
 

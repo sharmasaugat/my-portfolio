@@ -1,4 +1,3 @@
-
 import { injectable } from 'inversify';
 import { SESClient, SendEmailCommand } from '@aws-sdk/client-ses';
 import { IMessageProvider } from '@core/interfaces/IMessageProvider';
@@ -9,6 +8,30 @@ import { logger } from '@utils/logger';
 import { AppError } from '@utils/errors/AppError';
 import { CONFIG } from '@utils/constants';
 
+/**
+ * @class SESProvider
+ * @description AWS SES implementation of IMessageProvider for email delivery
+ * 
+ * Architecture:
+ * - Implements Adapter pattern for AWS SES integration
+ * - Uses Dependency Injection via inversify
+ * 
+ * Security measures:
+ * - Input sanitization for XSS prevention
+ * - Email validation using regex
+ * - Rate limiting integration
+ * - Secure credential management
+ * 
+ * Error handling:
+ * - Graceful AWS error handling
+ * - Detailed logging for debugging
+ * - Result pattern for type-safe error handling
+ * 
+ * Integration points:
+ * - AWS SES
+ * - Logging system
+ * - Configuration management
+ */
 @injectable()
 export class SESProvider implements IMessageProvider<IEmailPayload> {
     private sesClient: SESClient;

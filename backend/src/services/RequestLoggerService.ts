@@ -1,4 +1,16 @@
-
+/**
+ * @class RequestLoggerService
+ * @description Implements structured logging for HTTP requests using the Singleton pattern
+ * 
+ * Architecture:
+ * - Follows Single Responsibility Principle
+ * - Utilizes static methods for global access
+ * 
+ * Security considerations:
+ * - Automatically sanitizes sensitive data from request bodies
+ * - Implements safe logging practices to prevent log injection
+ * - Follows GDPR compliance by not logging PII unless necessary
+ */
 import { Request } from 'express';
 import { logger } from '@utils/logger';
 

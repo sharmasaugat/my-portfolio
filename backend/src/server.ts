@@ -1,3 +1,14 @@
+/**
+ * Server entry point implementing production-grade error handling
+ * and process management. Follows Node.js best practices for
+ * handling uncaught exceptions and unhandled rejections.
+ * 
+ * Features:
+ * - Graceful error handling
+ * - Process monitoring
+ * - Clean exit strategies
+ */
+
 import './config/moduleAliases';
 import 'dotenv/config';
 import App from './app';

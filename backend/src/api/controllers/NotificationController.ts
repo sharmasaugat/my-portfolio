@@ -1,3 +1,16 @@
+/**
+ * Controller handling notification requests implementing the Clean Architecture pattern.
+ * 
+ * Design Patterns:
+ * - Dependency Injection for service coupling
+ * - Response formatting standardization
+ * - Error boundary implementation
+ * - Async/await with proper error handling
+ * 
+ * Response Format:
+ * Success: { success: true, data: string }
+ * Error: { success: false, error: string }
+ */
 import { Request, Response, NextFunction } from 'express';
 import { injectable, inject } from 'inversify';
 import { TYPES } from '../../types';

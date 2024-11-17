@@ -1,3 +1,16 @@
+/**
+ * Notification routes configuration implementing security best practices.
+ * 
+ * Security Features:
+ * - Rate limiting protection against DoS
+ * - Request validation using schemas
+ * - Request logging for audit trails
+ * - Dependency injection for controller instantiation
+ * 
+ * Routes:
+ * POST /email - Send email notifications
+ * POST /sms - Send SMS notifications
+ */
 import { Router } from 'express';
 import { NotificationController } from '@controllers/NotificationController';
 import { validateSchema } from '@middlewares/validator';

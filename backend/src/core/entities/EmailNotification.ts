@@ -1,3 +1,13 @@
+/**
+ * Domain entity for email notifications with additional email-specific validation.
+ * Implements the Factory pattern with enhanced validation rules.
+ * 
+ * Key Features:
+ * - Subject line validation
+ * - Immutable properties
+ * - Type-safe creation through factory method
+ * - Extended validation rules specific to email
+ */
 import { v4 as uuidv4 } from 'uuid';
 import { NotificationType } from './NotificationStatus';
 import { Notification } from './Notification';
