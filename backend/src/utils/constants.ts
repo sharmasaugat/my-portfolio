@@ -1,8 +1,5 @@
-// src/utils/constants.ts
-export const DEFAULT_RATE_LIMIT = {
-    windowMs: 15 * 60 * 1000, // 15 minutes
-    max: 100 // limit each IP to 100 requests per windowMs
-};
+
+import { RATE_LIMIT } from '../config/rateLimitConfig';
 
 export const MESSAGE_LIMITS = {
     name: {
@@ -94,8 +91,11 @@ export const CONFIG = {
         }
     },
 
-    RATE_LIMIT: {
-        WINDOW_MS: 15 * 60 * 1000, // 15 minutes
-        MAX_REQUESTS: 100
-    }
+    REDIS: {
+        HOST: process.env.REDIS_HOST || 'localhost',
+        PORT: Number(process.env.REDIS_PORT) || 6379,
+        PASSWORD: process.env.REDIS_PASSWORD || '',
+    },
+
+    RATE_LIMIT
 } as const;

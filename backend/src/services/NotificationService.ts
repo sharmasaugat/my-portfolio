@@ -5,8 +5,9 @@ import { INotificationService } from '../core/interfaces/INotificationService';
 import { IMessageProvider } from '../core/interfaces/IMessageProvider';
 import { Result } from '../utils/Result';
 import { AppError } from '../utils/errors/AppError';
-import { NotificationType, NotificationStatus } from '../core/entities/NotificationStatus';
-import { Notification } from '../core/entities/Notification';
+import { NotificationStatus } from '../core/entities/NotificationStatus';
+import { EmailNotification } from '../core/entities/EmailNotification';
+import { SMSNotification } from '../core/entities/SMSNotification';
 import { IEmailPayload } from '../core/interfaces/IEmailPayload';
 import { ISMSPayload } from '../core/interfaces/ISMSPayload';
 import { logger } from '../utils/logger';
@@ -31,14 +32,15 @@ export class NotificationService implements INotificationService {
             logger.info(`Using verified email: ${process.env.AWS_SES_FROM_EMAIL}`); // Log the verified email
             logger.info(`AWS region: ${process.env.AWS_REGION}`); // Log the AWS region
 
-            const notification = Notification.create(NotificationType.EMAIL, {
-                type: NotificationType.EMAIL,
+            const notification = EmailNotification.create({
                 recipient: process.env.AWS_SES_FROM_EMAIL!, // Verified email address
                 content: {
                     message: payload.message,
                     subject: payload.subject
                 },
-                status: NotificationStatus.PENDING
+                metadata: {
+                    name: payload.name
+                }
             });
 
             if (notification instanceof Error) {
@@ -68,13 +70,14 @@ export class NotificationService implements INotificationService {
                 return Result.fail('Invalid phone number');
             }
 
-            const notification = Notification.create(NotificationType.SMS, {
-                type: NotificationType.SMS,
+            const notification = SMSNotification.create({
                 recipient: payload.phone,
                 content: {
                     message: payload.message
                 },
-                status: NotificationStatus.PENDING
+                metadata: {
+                    name: payload.name
+                }
             });
 
             if (notification instanceof Error) {

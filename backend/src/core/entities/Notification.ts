@@ -1,28 +1,10 @@
 // src/core/entities/Notification.ts
 import { v4 as uuidv4 } from 'uuid';
 import { NotificationStatus, NotificationType } from './NotificationStatus';
+import { NotificationResponse, BaseNotificationProps } from '../../types/NotificationTypes';
 
-export interface NotificationResponse {
-    id: string;
-    status: NotificationStatus;
-    type: NotificationType;
-    recipient: string;
-    sentAt?: string;
-}
-
-export type NotificationProps = {
-    type: NotificationType;
-    recipient: string;
-    content: {
-        message: string;
-        subject?: string;
-    };
-    status?: NotificationStatus;
-    metadata?: Record<string, unknown>;
-}
-
-export class Notification {
-    private constructor(
+export abstract class Notification {
+    protected constructor(
         public readonly id: string,
         public readonly type: NotificationType,
         public readonly recipient: string,
@@ -34,7 +16,7 @@ export class Notification {
         public metadata?: Record<string, any>
     ) {}
 
-    public static create(type: NotificationType, payload: NotificationProps): Notification | Error {
+    protected static validateBase(payload: BaseNotificationProps): Error | null {
         if (!payload.recipient) {
             return new Error('Recipient is required');
         }
@@ -43,18 +25,7 @@ export class Notification {
             return new Error('Message is required');
         }
 
-        if (type === NotificationType.EMAIL && !payload.content.subject) {
-            return new Error('Subject is required for email notifications');
-        }
-
-        return new Notification(
-            uuidv4(),
-            type,
-            payload.recipient,
-            payload.content,
-            payload.status || NotificationStatus.PENDING,
-            payload.metadata
-        );
+        return null;
     }
 
     public toResponse(): NotificationResponse {

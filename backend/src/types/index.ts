@@ -1,4 +1,3 @@
-// src/types/index.ts
 export const TYPES = {
     NotificationService: Symbol.for('NotificationService'),
     NotificationController: Symbol.for('NotificationController'),

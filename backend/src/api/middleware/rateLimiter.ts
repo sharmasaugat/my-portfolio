@@ -1,33 +1,46 @@
-// src/api/middleware/rateLimiter.ts
-import rateLimit from 'express-rate-limit';
+import { Request, Response, NextFunction } from 'express';
 import { RateLimitError } from '../../utils/errors/AppError';
+import { TokenBucket } from '../../core/ratelimiter/algorithms/tokenBucket';
+import { RATE_LIMIT } from '../../config/rateLimitConfig';
 
-const createLimiter = (
-    windowMs: number,
-    max: number,
-    type: string
-) => rateLimit({
-    windowMs,
-    max,
-    handler: () => {
-        throw new RateLimitError(
-            `Too many ${type} requests. Please try again later.`
-        );
-    },
-    keyGenerator: (req) => {
-        return `${req.ip}-${type}`;
+const buckets = new Map<string, TokenBucket>();
+
+function getTokenBucket(key: string, capacity: number, refillRate: number): TokenBucket {
+    if (!buckets.has(key)) {
+        buckets.set(key, new TokenBucket({ capacity, refillRate }));
     }
-});
+    return buckets.get(key)!;
+}
+
+function rateLimiterFactory(
+    limitKeyPrefix: string,
+    limitOptions: { WINDOW_MS: number; MAX_REQUESTS: number },
+    errorMessage: string
+) {
+    const capacity = limitOptions.MAX_REQUESTS;
+    const refillRate = capacity / (limitOptions.WINDOW_MS / 1000); // Tokens per second
+
+    return (req: Request, res: Response, next: NextFunction) => {
+        const key = `${limitKeyPrefix}:${req.ip}`;
+        const bucket = getTokenBucket(key, capacity, refillRate);
+
+        if (bucket.consume()) {
+            next();
+        } else {
+            next(new RateLimitError(errorMessage));
+        }
+    };
+}
 
 export const rateLimiters = {
-    email: createLimiter(
-        15 * 60 * 1000, // 15 minutes
-        5, // 5 requests per window
-        'email'
+    email: rateLimiterFactory(
+        'email',
+        RATE_LIMIT.EMAIL,
+        'Too many email requests. Please try again later.'
     ),
-    sms: createLimiter(
-        60 * 60 * 1000, // 1 hour
-        3, // 3 requests per window
-        'SMS'
-    )
+    sms: rateLimiterFactory(
+        'sms',
+        RATE_LIMIT.SMS,
+        'Too many SMS requests. Please try again later.'
+    ),
 };
