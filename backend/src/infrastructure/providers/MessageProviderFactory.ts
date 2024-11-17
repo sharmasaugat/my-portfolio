@@ -1,4 +1,4 @@
-// src/infrastructure/providers/MessageProviderFactory.ts
+// Purpose: Factory class for creating message providers based on notification type.
 import { injectable, inject } from 'inversify';
 import { TYPES } from '../../types';
 import { IMessageProvider } from '@core/interfaces/IMessageProvider';
