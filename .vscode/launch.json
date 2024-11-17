@@ -16,11 +16,11 @@
             ],
             "sourceMaps": true,
             "outFiles": ["${workspaceFolder}/backend/dist/**/*.js"],
-            "cwd": "${workspaceFolder}/backend",  // This matches your backend folder
+            "cwd": "${workspaceFolder}/backend",
             "console": "integratedTerminal",
             "env": {
                 "NODE_ENV": "development",
-                "TS_NODE_PROJECT": "${workspaceFolder}/backend/tsconfig.json"  // Full path to tsconfig
+                "TS_NODE_PROJECT": "${workspaceFolder}/backend/tsconfig.json" 
             },
             "protocol": "inspector",
             "restart": true
