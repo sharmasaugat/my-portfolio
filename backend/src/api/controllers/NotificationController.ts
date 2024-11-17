@@ -1,8 +1,8 @@
 import { Request, Response, NextFunction } from 'express';
 import { injectable, inject } from 'inversify';
 import { TYPES } from '../../types';
-import { INotificationService } from '../../core/interfaces/INotificationService';
-import { AppError } from '../../utils/errors/AppError';
+import { INotificationService } from '@interfaces/INotificationService';  // This should now work
+import { AppError } from '@utils/errors/AppError';
 
 @injectable()
 export class NotificationController {

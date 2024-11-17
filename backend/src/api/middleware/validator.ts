@@ -2,7 +2,7 @@
 import { Request, Response, NextFunction } from 'express';
 import { validationResult } from 'express-validator';
 import { Schema } from 'joi';
-import { logger } from '../../utils/logger';
+import { logger } from '@utils/logger';
 
 export const validateRequest = (
     req: Request,

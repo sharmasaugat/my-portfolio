@@ -1,6 +1,6 @@
 
-import { TokenBucket } from '../core/ratelimiter/algorithms/tokenBucket';
-import { RateLimitError } from '../utils/errors/AppError';
+import { TokenBucket } from '@ratelimiter/algorithms/tokenBucket';
+import { RateLimitError } from '@errors/AppError';
 
 export class RateLimiterService {
     private static buckets = new Map<string, TokenBucket>();

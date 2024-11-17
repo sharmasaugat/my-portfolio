@@ -1,4 +1,4 @@
-// src/utils/Result.ts
+
 export class Result<T> {
     public readonly isSuccess: boolean;
     public readonly isFailure: boolean;

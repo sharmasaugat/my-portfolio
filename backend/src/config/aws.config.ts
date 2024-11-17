@@ -1,9 +1,9 @@
-// src/config/aws.config.ts
+
 import { SESClient } from '@aws-sdk/client-ses';
 import { SNSClient } from '@aws-sdk/client-sns';
-import { logger } from '../utils/logger';
-import { CONFIG } from '../utils/constants';
-import { AppError } from '../utils/errors/AppError';
+import { logger } from '@utils/logger';
+import { CONFIG } from '@utils/constants';
+import { AppError } from '@utils/errors/AppError';
 
 export const initializeAWS = (): void => {
     try {

@@ -1,16 +1,15 @@
 import { injectable, inject } from 'inversify';
 import { TYPES } from '../types';
 import { EmailDTO, SMSDTO } from '../types/dto';
-import { INotificationService } from '../core/interfaces/INotificationService';
-import { IMessageProvider } from '../core/interfaces/IMessageProvider';
-import { Result } from '../utils/Result';
-import { AppError } from '../utils/errors/AppError';
-import { NotificationStatus } from '../core/entities/NotificationStatus';
-import { EmailNotification } from '../core/entities/EmailNotification';
-import { SMSNotification } from '../core/entities/SMSNotification';
-import { IEmailPayload } from '../core/interfaces/IEmailPayload';
-import { ISMSPayload } from '../core/interfaces/ISMSPayload';
-import { logger } from '../utils/logger';
+import { INotificationService } from '@core/interfaces/INotificationService';
+import { IMessageProvider } from '@interfaces/IMessageProvider';
+import { Result } from '@utils/Result';
+import { AppError } from '@utils/errors/AppError';
+import { EmailNotification } from '@core/entities/EmailNotification';
+import { SMSNotification } from '@core/entities/SMSNotification';
+import { IEmailPayload } from '@core/interfaces/IEmailPayload';
+import { ISMSPayload } from '@interfaces/ISMSPayload';
+import { logger } from '@utils/logger';
 
 @injectable()
 export class NotificationService implements INotificationService {
@@ -29,11 +28,11 @@ export class NotificationService implements INotificationService {
                 return Result.fail('Invalid email address');
             }
 
-            logger.info(`Using verified email: ${process.env.AWS_SES_FROM_EMAIL}`); // Log the verified email
-            logger.info(`AWS region: ${process.env.AWS_REGION}`); // Log the AWS region
+            logger.info(`Using verified email: ${process.env.AWS_SES_FROM_EMAIL}`); 
+            logger.info(`AWS region: ${process.env.AWS_REGION}`); 
 
             const notification = EmailNotification.create({
-                recipient: process.env.AWS_SES_FROM_EMAIL!, // Verified email address
+                recipient: process.env.AWS_SES_FROM_EMAIL!,
                 content: {
                     message: payload.message,
                     subject: payload.subject

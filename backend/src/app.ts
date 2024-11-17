@@ -1,11 +1,11 @@
 import 'reflect-metadata';
 import express, { Application } from 'express';
-import { notificationRoutes } from './api/routes/notification.routes';
-import { errorHandler } from './api/middleware/errorHandler';
-import { logger } from './utils/logger';
-import { initializeAWS } from './config/aws.config';
-import { CONFIG } from './utils/constants';
-import { configureMiddleware } from './config/middleware.config';
+import { notificationRoutes } from '@routes/notification.routes';
+import { errorHandler } from '@middlewares/errorHandler';
+import { logger } from '@utils/logger';
+import { initializeAWS } from '@config/aws.config';
+import { CONFIG } from '@utils/constants';
+import { configureMiddleware } from '@config/middleware.config';
 
 class App {
     public app: Application;

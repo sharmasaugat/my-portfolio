@@ -1,8 +1,7 @@
-// src/api/middleware/errorHandler.ts
 import { Request, Response, NextFunction } from 'express';
-import { AppError } from '../../utils/errors/AppError';
-import { logger } from '../../utils/logger';
-import { ERROR_MESSAGES } from '../../utils/constants';
+import { AppError } from '@utils/errors/AppError';
+import { logger } from '@utils/logger';
+import { ERROR_MESSAGES } from '@utils/constants';
 import { ValidationError } from 'joi';
 
 export const errorHandler = (

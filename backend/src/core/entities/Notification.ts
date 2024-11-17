@@ -1,5 +1,4 @@
-// src/core/entities/Notification.ts
-import { v4 as uuidv4 } from 'uuid';
+
 import { NotificationStatus, NotificationType } from './NotificationStatus';
 import { NotificationResponse, BaseNotificationProps } from '../../types/NotificationTypes';
 

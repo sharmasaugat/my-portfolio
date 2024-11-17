@@ -1,11 +1,11 @@
 import { injectable } from 'inversify';
 import { SNSClient, PublishCommand } from '@aws-sdk/client-sns';
-import { IMessageProvider } from '../../../core/interfaces/IMessageProvider';
-import { ISMSPayload } from '../../../core/interfaces/ISMSPayload';
-import { NotificationType } from '../../../core/entities/NotificationStatus';
-import { Result } from '../../../utils/Result';
-import { logger } from '../../../utils/logger';
-import { AppError } from '../../../utils/errors/AppError';
+import { IMessageProvider } from '@core/interfaces/IMessageProvider';
+import { ISMSPayload } from '@core/interfaces/ISMSPayload';
+import { NotificationType } from '@core/entities/NotificationStatus';
+import { Result } from '@utils/Result';
+import { logger } from '@utils/logger';
+import { AppError } from '@utils/errors/AppError';
 
 @injectable()
 export class SNSProvider implements IMessageProvider<ISMSPayload> {

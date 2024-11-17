@@ -1,10 +1,10 @@
 import { Router } from 'express';
-import { NotificationController } from '../controllers/NotificationController';
-import { validateSchema } from '../middleware/validator';
-import { notificationValidators } from '../validators/notification.validator';
-import { requestLogger } from '../middleware/requestLogger';
-import { container } from '../../config/container';
-import { rateLimiters } from '../middleware/rateLimiter';
+import { NotificationController } from '@controllers/NotificationController';
+import { validateSchema } from '@middlewares/validator';
+import { notificationValidators } from '@validators/notification.validator';
+import { requestLogger } from '@middlewares/requestLogger';
+import { container } from '@config/container';
+import { rateLimiters } from '@middlewares/rateLimiter';
 
 const router = Router();
 const controller = container.resolve(NotificationController);

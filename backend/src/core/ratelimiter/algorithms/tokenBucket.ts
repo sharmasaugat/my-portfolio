@@ -1,8 +1,8 @@
-import { RateLimitError } from '../../../utils/errors/AppError';
+
 
 interface TokenBucketConfig {
-    capacity: number;       // Max tokens (burst capacity)
-    refillRate: number;     // Tokens per millisecond
+    capacity: number;      
+    refillRate: number;
 }
 
 export class TokenBucket {

@@ -8,3 +8,15 @@ export const TYPES = {
     SMSProvider: Symbol.for('SMSProvider'),
     Logger: Symbol.for('Logger')
 };
+
+export interface NotificationConfig {
+    enabled: boolean;
+    provider: string;
+    credentials: Record<string, any>;
+}
+
+export interface NotificationPayload {
+    to: string;
+    subject?: string;
+    message: string;
+}

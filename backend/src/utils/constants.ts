@@ -1,5 +1,5 @@
 
-import { RATE_LIMIT } from '../config/rateLimitConfig';
+import { RATE_LIMIT } from '@config/rateLimitConfig';
 
 export const MESSAGE_LIMITS = {
     name: {

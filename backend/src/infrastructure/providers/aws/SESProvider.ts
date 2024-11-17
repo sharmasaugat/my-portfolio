@@ -1,13 +1,13 @@
-// src/infrastructure/providers/aws/SESProvider.ts
+
 import { injectable } from 'inversify';
 import { SESClient, SendEmailCommand } from '@aws-sdk/client-ses';
-import { IMessageProvider } from '../../../core/interfaces/IMessageProvider';
-import { IEmailPayload } from '../../../core/interfaces/IEmailPayload';
-import { NotificationType } from '../../../core/entities/NotificationStatus';
-import { Result } from '../../../utils/Result';
-import { logger } from '../../../utils/logger';
-import { AppError } from '../../../utils/errors/AppError';
-import { CONFIG } from '../../../utils/constants';
+import { IMessageProvider } from '@core/interfaces/IMessageProvider';
+import { IEmailPayload } from '@core/interfaces/IEmailPayload';
+import { NotificationType } from '@core/entities/NotificationStatus';
+import { Result } from '@utils/Result';
+import { logger } from '@utils/logger';
+import { AppError } from '@utils/errors/AppError';
+import { CONFIG } from '@utils/constants';
 
 @injectable()
 export class SESProvider implements IMessageProvider<IEmailPayload> {
@@ -19,8 +19,8 @@ export class SESProvider implements IMessageProvider<IEmailPayload> {
             throw new AppError('Missing required AWS configuration for SES', 500, 'AWS_CONFIG_ERROR');
         }
 
-        logger.info(`Using AWS region: ${CONFIG.AWS.REGION}`); // Log the AWS region
-        logger.info(`Using SES from email: ${CONFIG.AWS.SES_FROM_EMAIL}`); // Log the SES from email
+        logger.info(`Using AWS region: ${CONFIG.AWS.REGION}`);
+        logger.info(`Using SES from email: ${CONFIG.AWS.SES_FROM_EMAIL}`); 
 
         this.sesClient = new SESClient({
             region: CONFIG.AWS.REGION
@@ -32,7 +32,7 @@ export class SESProvider implements IMessageProvider<IEmailPayload> {
             await this.validatePayload(payload);
 
             const params = {
-                Source: CONFIG.AWS.SES_FROM_EMAIL!, // Verified email
+                Source: CONFIG.AWS.SES_FROM_EMAIL!,
                 Destination: {
                     ToAddresses: [payload.email]
                 },
@@ -79,7 +79,7 @@ export class SESProvider implements IMessageProvider<IEmailPayload> {
     private sanitizeInput(input: string): string {
         return input
             .trim()
-            .replace(/[<>]/g, '') // Remove potential HTML tags
+            .replace(/[<>]/g, '') 
             .substring(0, CONFIG.EMAIL.TEMPLATE.SUBJECT_MAX_LENGTH);
     }
 

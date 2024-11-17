@@ -1,4 +1,4 @@
-// src/utils/errors/AppError.ts
+
 export class AppError extends Error {
     constructor(
         public readonly message: string,

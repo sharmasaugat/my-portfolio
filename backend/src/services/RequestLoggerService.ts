@@ -1,6 +1,6 @@
 
 import { Request } from 'express';
-import { logger } from '../utils/logger';
+import { logger } from '@utils/logger';
 
 export class RequestLoggerService {
     static logRequest(req: Request): void {

@@ -1,6 +1,6 @@
-// src/core/interfaces/IMessageProvider.ts
-import { NotificationType } from '../entities/NotificationStatus';
-import { Result } from './../../utils/Result';
+
+import { NotificationType } from '@entities/NotificationStatus';
+import { Result } from '@utils/Result';
 import { IEmailPayload } from './IEmailPayload';
 import { ISMSPayload } from './ISMSPayload';
 

@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
-import { RateLimitError } from '../../utils/errors/AppError';
-import { TokenBucket } from '../../core/ratelimiter/algorithms/tokenBucket';
-import { RATE_LIMIT } from '../../config/rateLimitConfig';
+import { RateLimitError } from '@utils/errors/AppError';
+import { TokenBucket } from '@ratelimiter/algorithms/tokenBucket';
+import { RATE_LIMIT } from '@config/rateLimitConfig';
 
 const buckets = new Map<string, TokenBucket>();
 

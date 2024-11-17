@@ -1,9 +1,9 @@
 // src/infrastructure/providers/MessageProviderFactory.ts
 import { injectable, inject } from 'inversify';
 import { TYPES } from '../../types';
-import { IMessageProvider } from '../../core/interfaces/IMessageProvider';
-import { NotificationType } from '../../core/entities/NotificationStatus';
-import { AppError } from '../../utils/errors/AppError';
+import { IMessageProvider } from '@core/interfaces/IMessageProvider';
+import { NotificationType } from '@core/entities/NotificationStatus';
+import { AppError } from '@utils/errors/AppError';
 
 @injectable()
 export class MessageProviderFactory {

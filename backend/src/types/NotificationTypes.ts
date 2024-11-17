@@ -1,5 +1,5 @@
 
-import { NotificationStatus, NotificationType } from '../core/entities/NotificationStatus';
+import { NotificationStatus, NotificationType } from '@entities/NotificationStatus';
 
 export interface NotificationResponse {
     id: string;

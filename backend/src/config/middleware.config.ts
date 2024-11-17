@@ -3,10 +3,10 @@ import { Application } from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
 import compression from 'compression';
-import { CONFIG } from '../utils/constants';
 import express from 'express';
 import { v4 as uuidv4 } from 'uuid';
-import { RequestLoggerService } from '../services/RequestLoggerService';
+import { CONFIG } from '@utils/constants';
+import { RequestLoggerService } from '@services/RequestLoggerService';
 
 export const configureMiddleware = (app: Application): void => {
     app.use(cors({

@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es2017",
+    "target": "es6",
     "module": "commonjs",
     "lib": ["es2017", "esnext.asynciterable"],
     "typeRoots": ["./node_modules/@types"],
@@ -16,10 +16,24 @@
     "esModuleInterop": true,
     "baseUrl": "./src",
     "paths": {
-      "@/*": ["*"]
+      "@api/*": ["api/*"],
+      "@config/*": ["config/*"],
+      "@controllers/*": ["api/controllers/*"],
+      "@middlewares/*": ["api/middleware/*"],
+      "@routes/*": ["api/routes/*"],
+      "@validators/*": ["api/validators/*"],
+      "@services/*": ["services/*"],
+      "@utils/*": ["utils/*"],
+      "@errors/*": ["utils/errors/*"],
+      "@core/*": ["core/*"],
+      "@entities/*": ["core/entities/*"],
+      "@interfaces/*": ["core/interfaces/*"],
+      "@ratelimiter/*": ["core/ratelimiter/*"],
+      "@infrastructure/*": ["infrastructure/*"],
+      "@providers/*": ["infrastructure/providers/*"],
+      "@aws/*": ["infrastructure/providers/aws/*"]
     }
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules", "dist"]
-
 }

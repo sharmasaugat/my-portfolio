@@ -1,5 +1,5 @@
 import { v4 as uuidv4 } from 'uuid';
-import { NotificationStatus, NotificationType } from './NotificationStatus';
+import { NotificationType } from './NotificationStatus';
 import { Notification } from './Notification';
 import { BaseNotificationProps } from '../../types/NotificationTypes';
 

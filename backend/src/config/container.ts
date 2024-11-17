@@ -3,15 +3,15 @@ import { Container } from 'inversify';
 import { TYPES } from '../types';
 
 // Interfaces
-import { INotificationService } from '../core/interfaces/INotificationService';
-import { IMessageProvider } from '../core/interfaces/IMessageProvider';
+import { INotificationService } from '@interfaces/INotificationService';
+import { IMessageProvider } from '@interfaces/IMessageProvider';
 
 // Implementations
-import { NotificationService } from '../services/NotificationService';
-import { SESProvider } from '../infrastructure/providers/aws/SESProvider';
-import { SNSProvider } from '../infrastructure/providers/aws/SNSProvider';
-import { MessageProviderFactory } from '../infrastructure/providers/MessageProviderFactory';
-import { NotificationController } from '../api/controllers/NotificationController';
+import { NotificationService } from '@services/NotificationService';
+import { SESProvider } from '@aws/SESProvider';
+import { SNSProvider } from '@aws/SNSProvider';
+import { MessageProviderFactory } from '@providers/MessageProviderFactory';
+import { NotificationController } from '@controllers/NotificationController';
 
 const container = new Container();
 
