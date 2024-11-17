@@ -1,16 +1,16 @@
-
 import React, { memo, useMemo } from 'react';
 import PropTypes from 'prop-types';
 
 const DeveloperInfo = memo(({ info }) => {
-  const formattedInfo = useMemo(() => 
-    JSON.stringify(info, null, 2), [info]
-  );
+  const displayInfo = useMemo(() => {
+    const { nameColor, ...displayData } = info;
+    return JSON.stringify(displayData, null, 2);
+  }, [info]);
 
   return (
     <div className="code-summary" data-testid="developer-info">
       <pre className="text-sm text-[#64FFDA]/90">
-        <code>{`const developer = ${formattedInfo}`}</code>
+        <code>{`const developer = ${displayInfo}`}</code>
       </pre>
     </div>
   );
