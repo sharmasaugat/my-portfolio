@@ -102,12 +102,12 @@ export const CONTACT_DATA = {
     }
   },
   messages: {
-    success: 'Message sent successfully!',
+    success: 'Thank you for reaching out! I will get back to you shortly.',
     error: 'Something went wrong. Please try again.',
     sending: 'Sending...'
   },
   formConfig: {
-    modalCloseDelay: 3000,
+    modalCloseDelay: 5000, // Changed from 3000 to 5000
     successMessageDelay: 2000,
     initialState: {
       values: {

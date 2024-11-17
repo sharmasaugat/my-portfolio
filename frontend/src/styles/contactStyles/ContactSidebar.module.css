@@ -1,9 +1,9 @@
 .container {
-  @apply flex flex-col items-center lg:items-start;
+  @apply flex flex-col items-center lg:items-start gap-3;
 }
 
 .avatar {
-  @apply relative animate-float mb-8;
+  @apply relative animate-float mb-2;
 }
 
 .avatarGlow {
@@ -19,7 +19,7 @@
 }
 
 .heading {
-  @apply text-2xl font-semibold bg-gradient-to-r from-blue-400 to-purple-400 text-transparent bg-clip-text mb-4;
+  @apply text-lg lg:text-xl font-semibold bg-gradient-to-r from-blue-400 to-purple-400 text-transparent bg-clip-text mb-2;
 }
 
 .socialLinks {
@@ -27,7 +27,7 @@
 }
 
 .avatarInner {
-  @apply relative w-32 h-32 ripple-bg bg-gradient-to-r from-blue-500 to-purple-500 rounded-full p-1;
+  @apply relative w-20 h-20 lg:w-24 lg:h-24 ripple-bg bg-gradient-to-r from-blue-500 to-purple-500 rounded-full p-1;
 }
 
 .avatarContent {

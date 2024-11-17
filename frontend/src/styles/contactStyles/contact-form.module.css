@@ -1,19 +1,18 @@
-
 .container {
-  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 1rem;
+  margin: 2rem 0;
 }
 
 .formWrapper {
-  max-width: 72rem;
+  max-width: 64rem;
   width: 100%;
   background: linear-gradient(to bottom, rgba(31, 41, 55, 0.5), rgba(31, 41, 55, 0.3));
   backdrop-filter: blur(1rem);
-  border-radius: 1rem;
-  padding: 2rem;
+  border-radius: 0.75rem;
+  padding: 1.25rem;
   position: relative;
   overflow: hidden;
   border: 1px solid rgba(55, 65, 81, 0.5);
@@ -23,7 +22,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 400px;
+  min-height: 200px;
 }
 
 .content {
@@ -31,21 +30,21 @@
   z-index: 10;
   display: grid;
   grid-template-columns: 1fr;
-  gap: 2rem;
+  gap: 1.5rem;
 }
 
 .leftColumn {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2rem;
+  gap: 1.5rem;
 }
 
 .infoSection {
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1rem;
 }
 
 .rightColumn {

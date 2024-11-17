@@ -16,15 +16,15 @@ const ContactForm = () => {
   
   return (
     <div className={styles.container}>
-      <div className={styles.formWrapper}>
+      <div className={`${styles.formWrapper} my-4 lg:my-8`}>
         {formState.initialLoading ? (
-          <div className={styles.loadingContainer}>
+          <div className="min-h-[300px] flex items-center justify-center">
             <Loading size="lg" />
           </div>
         ) : (
           <>
             <GradientBackground />
-            <div className={styles.content}>
+            <div className={`${styles.content} py-2`}>
               <div className={styles.leftColumn}>
                 <AnimatedAvatar />
                 <div className={styles.infoSection}>

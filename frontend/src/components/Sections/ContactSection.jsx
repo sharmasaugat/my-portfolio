@@ -6,7 +6,7 @@ const ContactSection = () => {
   const { values, loading, submitted, error, successMessage, handleChange, handleSubmit } = useContactForm();
 
   return (
-    <section className="min-h-screen bg-gray-900 pt-16">
+    <section className="bg-gray-900 py-8">
       <EnhancedContactForm
         values={values}
         loading={loading}
