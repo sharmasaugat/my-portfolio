@@ -30,19 +30,20 @@ const portfolioData = {
       position: 'Full-Stack Software Engineer',
       period: 'April 2023 – Present',
       metrics: [
-        { label: 'Transactions/sec', value: 10000, suffix: '+' },
-        { label: 'Response Time↓', value: 80, suffix: '%' },
-        { label: 'Bug Reduction', value: 90, suffix: '%' },
-        { label: 'Feature Growth', value: 200, suffix: '%' }
+        { label: 'Migration Progress', value: 40, suffix: '%' },
+        { label: 'API Performance↑', value: 40, suffix: '%' },
+        { label: 'Test Coverage', value: 85, suffix: '%' },
+        { label: 'Legacy Systems', value: 3, suffix: '' }
       ],
       achievements: [
-        'Engineered high-performance data processing system with 99.999% uptime',
-        'Lead developer for microservices migration using .NET Core and Angular 15',
-        'Developed standardized Angular component library reducing development time by 40%',
-        'Optimized API response times from 500ms to 50ms using caching and query optimization',
-        'Implemented comprehensive error logging and monitoring using Application Insights',
-        'Architected and deployed cloud-native solutions on Azure using AKS and Azure Functions',
-        'Mentored junior developers and conducted code reviews to maintain code quality'
+        'Contributing developer in legacy to cloud migration team for Fargo City ERP system',
+        'Developed and maintained Angular components and .NET Core APIs for cloud migration project',
+        'Implemented caching solutions improving query response times by 40%',
+        'Created data migration scripts and tools for legacy system integration',
+        'Built automated test suites achieving 85% code coverage for new features',
+        'Collaborated with senior developers to establish coding standards',
+        'Participated in code reviews and documentation of cloud migration processes',
+        'Assisted in monitoring and resolving production issues through logging implementation'
       ]
     },
     {
@@ -50,18 +51,19 @@ const portfolioData = {
       position: 'Full-Stack Software Engineer',
       period: 'May 2022 – April 2023',
       metrics: [
-        { label: 'Performance↑', value: 35, suffix: '%' },
-        { label: 'Deploy Time↓', value: 40, suffix: '%' },
-        { label: 'DB Performance↑', value: 30, suffix: '%' },
-        { label: 'Dev Cycle↓', value: 30, suffix: '%' }
+        { label: 'PowerBI Reports', value: 25, suffix: '+' },
+        { label: 'Data Sources', value: 15, suffix: '+' },
+        { label: 'Query Speed↑', value: 35, suffix: '%' },
+        { label: 'Active Users', value: 500, suffix: '+' }
       ],
       achievements: [
-        'Orchestrated transition from monolithic to microservices architecture using Spring Boot',
-        'Developed and maintained RESTful APIs using Spring Data JPA and PostgreSQL',
-        'Implemented OAuth2 authentication and role-based access control',
-        'Enhanced database performance through query optimization and indexing',
-        'Led the adoption of automated testing practices, achieving 85% code coverage',
-        'Reduced deployment time by 40% through CI/CD pipeline optimization'
+        'Developed RESTful APIs integrating maritime employee data with PowerBI dashboards',
+        'Created backend services for real-time tracking of maritime personnel and vessel data',
+        'Built data pipeline processing 15+ sources for PowerBI maritime analytics platform',
+        'Implemented secure API endpoints for sensitive employee and operational metrics',
+        'Optimized database queries reducing PowerBI refresh times by 35%',
+        'Collaborated with business analysts to design intuitive data visualization solutions',
+        'Maintained data integrity and compliance standards for maritime reporting systems'
       ]
     }
   ],

@@ -9,76 +9,76 @@ export const engineeringMetrics = [
   {
     name: 'Code Quality',
     icon: Code,
-    highlight: '95%',
-    trend: '+5%',
+    highlight: '85%',
+    trend: '+15%',
     dataKey: 'codeQuality',
     color: '#64FFDA',
     details: [
-      { label: 'Code Coverage', value: '95%' },
-      { label: 'Bug Rate', value: '0.5%' },
-      { label: 'Technical Debt', value: 'Low' },
+      { label: 'Code Coverage', value: '85%' },
+      { label: 'Bug Rate', value: '1.5%' },
+      { label: 'Technical Debt', value: 'Medium' },
       { label: 'Code Reviews', value: '100%' }
     ],
     kpis: [
-      { label: 'Maintainability', value: '95%' },
-      { label: 'Security Score', value: '98%' },
-      { label: 'Performance', value: '92%' }
+      { label: 'Maintainability', value: '85%' },
+      { label: 'Security Score', value: '90%' },
+      { label: 'Performance', value: '88%' }
     ],
     achievements: [
-      'Reduced bug escape rate by 75% through improved testing practices',
-      'Mentored 4 junior developers in code quality and best practices',
-      'Streamlined deployment process reducing release time by 40%',
-      'Achieved highest client satisfaction score in team for 2023'
+      'Implemented caching solutions improving response times by 40%',
+      'Created automated test suites with 85% coverage',
+      'Established coding standards for cloud migration',
+      'Achieved consistent code review participation'
     ]
   },
   {
     name: 'Git Activity',
     icon: GitBranch,
-    highlight: '2.5K',
-    trend: '+12%',
+    highlight: '1.2K',
+    trend: '+8%',
     dataKey: 'commits',
     color: '#818CF8',
     details: [
-      { label: 'Pull Requests', value: '450+' },
-      { label: 'Code Reviews', value: '500+' },
-      { label: 'Merge Rate', value: '95%' },
-      { label: 'Branches', value: '200+' }
+      { label: 'Pull Requests', value: '200+' },
+      { label: 'Code Reviews', value: '250+' },
+      { label: 'Merge Rate', value: '92%' },
+      { label: 'Branches', value: '100+' }
     ],
     kpis: [
-      { label: 'Merge Success', value: '98%' },
-      { label: 'Deploy Speed', value: '15m' },
-      { label: 'Branch Health', value: '96%' }
+      { label: 'Merge Success', value: '95%' },
+      { label: 'Deploy Speed', value: '25m' },
+      { label: 'Branch Health', value: '92%' }
     ],
     achievements: [
-      'Implemented CI/CD pipeline reducing deployment time by 70%',
-      'Automated code review process saving 10+ hours per week',
-      'Achieved zero failed deployments for 6 months straight',
-      'Reduced merge conflicts by 85% through improved git workflow'
+      'Developed efficient data migration scripts',
+      'Maintained clean git history for cloud migration',
+      'Regular participation in code reviews',
+      'Implemented feature branching strategy'
     ]
   },
   {
     name: 'System Design',
     icon: Database,
-    highlight: '99.9%',
-    trend: '+2%',
+    highlight: '99.5%',
+    trend: '+1.5%',
     dataKey: 'uptime',
     color: '#F472B6',
     details: [
-      { label: 'Services Built', value: '25+' },
-      { label: 'APIs Designed', value: '40+' },
-      { label: 'Microservices', value: '15+' },
-      { label: 'Cloud Platform', value: 'AWS' }
+      { label: 'Services Built', value: '15+' },
+      { label: 'APIs Designed', value: '25+' },
+      { label: 'Data Sources', value: '15+' },
+      { label: 'Cloud Platform', value: 'Azure/AWS' }
     ],
     kpis: [
-      { label: 'System Uptime', value: '99.9%' },
-      { label: 'Response Time', value: '<100ms' },
-      { label: 'Error Rate', value: '<0.1%' }
+      { label: 'System Uptime', value: '99.5%' },
+      { label: 'Response Time', value: '<200ms' },
+      { label: 'Error Rate', value: '<0.5%' }
     ],
     achievements: [
-      'Designed scalable architecture supporting 1M+ daily users',
-      'Reduced system latency by 65% through optimizations',
-      'Implemented zero-downtime deployment strategy',
-      'Cut infrastructure costs by 40% through efficient design'
+      'Built data pipeline for maritime analytics',
+      'Optimized database queries by 35%',
+      'Integrated 15+ data sources for PowerBI',
+      'Maintained maritime compliance standards'
     ]
   }
 ];
