@@ -21,7 +21,6 @@ export const radarSkills = [
     icon: Cloud,
     details: [
       'AWS Services',
-      'Azure Cloud',
       'Kubernetes',
       'Docker',
       'Serverless Architecture',
@@ -38,8 +37,8 @@ export const radarSkills = [
       'Node.js/Express',
       'Java/Spring',
       'C#/.NET Core',
-      'Python/Django',
-      'TypeScript'
+      'TypeScript',
+      'Genero BDL'
     ],
     color: 'from-emerald-500 to-teal-500'
   },

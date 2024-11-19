@@ -7,78 +7,78 @@ import {
 
 export const engineeringMetrics = [
   {
-    name: 'Code Quality',
+    name: 'Authentication',
     icon: Code,
-    highlight: '85%',
-    trend: '+15%',
-    dataKey: 'codeQuality',
+    highlight: '99.9%',
+    trend: '+5%',
+    dataKey: 'authRate',
     color: '#64FFDA',
     details: [
-      { label: 'Code Coverage', value: '85%' },
-      { label: 'Bug Rate', value: '1.5%' },
-      { label: 'Technical Debt', value: 'Medium' },
-      { label: 'Code Reviews', value: '100%' }
+      { label: 'Auth Success', value: '99.9%' },
+      { label: 'Response Time', value: '<100ms' },
+      { label: 'Active Users', value: '500+' },
+      { label: 'Security Score', value: '95%' }
     ],
     kpis: [
-      { label: 'Maintainability', value: '85%' },
-      { label: 'Security Score', value: '90%' },
-      { label: 'Performance', value: '88%' }
+      { label: 'Token Valid Rate', value: '99.9%' },
+      { label: 'SSO Success', value: '99.5%' },
+      { label: 'Auth Uptime', value: '99.9%' }
     ],
     achievements: [
-      'Implemented caching solutions improving response times by 40%',
-      'Created automated test suites with 85% coverage',
-      'Established coding standards for cloud migration',
-      'Achieved consistent code review participation'
+      'Implemented JWT authentication with Azure AD',
+      'Developed NS login module with SSO capability',
+      'Created role-based access control system',
+      'Maintained high security standards'
     ]
   },
   {
-    name: 'Git Activity',
+    name: 'API Performance',
     icon: GitBranch,
-    highlight: '1.2K',
-    trend: '+8%',
-    dataKey: 'commits',
+    highlight: '45%↑',
+    trend: '+15%',
+    dataKey: 'apiPerf',
     color: '#818CF8',
     details: [
-      { label: 'Pull Requests', value: '200+' },
-      { label: 'Code Reviews', value: '250+' },
-      { label: 'Merge Rate', value: '92%' },
-      { label: 'Branches', value: '100+' }
+      { label: 'Response Time↓', value: '45%' },
+      { label: 'Cache Hit Rate', value: '85%' },
+      { label: 'API Endpoints', value: '50+' },
+      { label: 'Daily Requests', value: '100K+' }
     ],
     kpis: [
-      { label: 'Merge Success', value: '95%' },
-      { label: 'Deploy Speed', value: '25m' },
-      { label: 'Branch Health', value: '92%' }
+      { label: 'API Success', value: '99.9%' },
+      { label: 'Load Speed', value: '<200ms' },
+      { label: 'Error Rate', value: '<0.1%' }
     ],
     achievements: [
-      'Developed efficient data migration scripts',
-      'Maintained clean git history for cloud migration',
-      'Regular participation in code reviews',
-      'Implemented feature branching strategy'
+      'Optimized chart data API responses',
+      'Implemented efficient caching strategy',
+      'Created high-performance endpoints',
+      'Reduced dashboard load times'
     ]
   },
   {
-    name: 'System Design',
+    name: 'Chart Solutions',
     icon: Database,
-    highlight: '99.5%',
-    trend: '+1.5%',
-    dataKey: 'uptime',
+    highlight: '25+',
+    trend: '+12%',
+    dataKey: 'charts',
     color: '#F472B6',
     details: [
-      { label: 'Services Built', value: '15+' },
-      { label: 'APIs Designed', value: '25+' },
+      { label: 'Charts Built', value: '25+' },
       { label: 'Data Sources', value: '15+' },
-      { label: 'Cloud Platform', value: 'Azure/AWS' }
+      { label: 'Refresh Rate', value: '5min' },
+      { label: 'Visual Types', value: '10+' }
     ],
     kpis: [
-      { label: 'System Uptime', value: '99.5%' },
-      { label: 'Response Time', value: '<200ms' },
-      { label: 'Error Rate', value: '<0.5%' }
+      { label: 'Chart Load↓', value: '45%' },
+      { label: 'Data Accuracy', value: '99.9%' },
+      { label: 'User Adoption', value: '95%' }
     ],
     achievements: [
-      'Built data pipeline for maritime analytics',
-      'Optimized database queries by 35%',
-      'Integrated 15+ data sources for PowerBI',
-      'Maintained maritime compliance standards'
+      'Developed PowerBI chart integrations',
+      'Created real-time data visualizations',
+      'Built custom chart endpoints',
+      'Optimized dashboard performance'
     ]
   }
 ];
@@ -122,8 +122,8 @@ export const graphTypes = {
 
 // Modify performance data to include baseline for stacked area
 export const performanceData = [
-  { year: '2020', codeQuality: 85, commits: 1200, uptime: 98.5, baseline: 70 },
-  { year: '2021', codeQuality: 88, commits: 1800, uptime: 99.0, baseline: 75 },
-  { year: '2022', codeQuality: 92, commits: 2200, uptime: 99.5, baseline: 80 },
-  { year: '2023', codeQuality: 95, commits: 2500, uptime: 99.9, baseline: 85 }
+  { year: '2020', authRate: 95, apiPerf: 75, charts: 5, baseline: 70 },
+  { year: '2021', authRate: 98, apiPerf: 85, charts: 12, baseline: 75 },
+  { year: '2022', authRate: 99.5, apiPerf: 92, charts: 18, baseline: 80 },
+  { year: '2023', authRate: 99.9, apiPerf: 95, charts: 25, baseline: 85 }
 ];

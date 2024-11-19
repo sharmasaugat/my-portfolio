@@ -39,7 +39,6 @@ const portfolioData = {
         'Contributing developer in legacy to cloud migration team for Fargo City ERP system',
         'Developed and maintained Angular components and .NET Core APIs for cloud migration project',
         'Implemented caching solutions improving query response times by 40%',
-        'Created data migration scripts and tools for legacy system integration',
         'Built automated test suites achieving 85% code coverage for new features',
         'Collaborated with senior developers to establish coding standards',
         'Participated in code reviews and documentation of cloud migration processes',
@@ -51,19 +50,20 @@ const portfolioData = {
       position: 'Full-Stack Software Engineer',
       period: 'May 2022 – April 2023',
       metrics: [
-        { label: 'PowerBI Reports', value: 25, suffix: '+' },
-        { label: 'Data Sources', value: 15, suffix: '+' },
-        { label: 'Query Speed↑', value: 35, suffix: '%' },
+        { label: 'Auth Success Rate', value: 99.9, suffix: '%' },
+        { label: 'Charts Created', value: 15, suffix: '+' },
+        { label: 'API Response↓', value: 45, suffix: '%' },
         { label: 'Active Users', value: 500, suffix: '+' }
       ],
       achievements: [
-        'Developed RESTful APIs integrating maritime employee data with PowerBI dashboards',
-        'Created backend services for real-time tracking of maritime personnel and vessel data',
-        'Built data pipeline processing 15+ sources for PowerBI maritime analytics platform',
-        'Implemented secure API endpoints for sensitive employee and operational metrics',
-        'Optimized database queries reducing PowerBI refresh times by 35%',
-        'Collaborated with business analysts to design intuitive data visualization solutions',
-        'Maintained data integrity and compliance standards for maritime reporting systems'
+        'Implemented secure authentication system using JWT tokens and Azure AD integration',
+        'Developed NS login module supporting single sign-on for maritime personnel portal',
+        'Created RESTful APIs powering dynamic PowerBI chart visualizations for vessel data',
+        'Built custom chart endpoints handling complex vessel inspection metrics and KPIs',
+        'Optimized chart data queries reducing dashboard load times by 45%',
+        'Integrated real-time data refresh for live vessel tracking visualizations',
+        'Implemented role-based access control for sensitive maritime data endpoints',
+        'Maintained detailed API documentation for chart integration endpoints'
       ]
     }
   ],
